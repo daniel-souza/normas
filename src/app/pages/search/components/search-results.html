@@ -7,15 +7,22 @@
     <article class="br-card mb-3">
       <div class="card-content">
         <p class="text-up-01">
-          {{ norma.categoria }} · {{ norma.dataPublicacao | date: 'dd/MM/yyyy' : 'UTC' }}
+          {{ norma.categoria }} ·
+          @if (norma.dataPublicacao) {
+            Publicação: {{ norma.dataPublicacao | date: 'dd/MM/yyyy' : 'UTC' }}
+          } @else {
+            Publicação não informada
+          }
         </p>
         <h3 class="h5">
           <a [routerLink]="['/normas', norma.id]">{{ norma.epigrafe }}</a>
         </h3>
         <p>{{ norma.ementa }}</p>
         <p class="mb-0">
-          <strong>{{ norma.situacao === 'revogada' ? 'Revogada' : 'Vigente' }}</strong> · Exemplo
-          fictício
+          <strong>{{ situacoes[norma.situacao] }}</strong>
+          @if (norma.demonstracao) {
+            · Exemplo fictício
+          }
         </p>
       </div>
     </article>

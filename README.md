@@ -1,6 +1,6 @@
 # Sistema de Normas
 
-Base Angular 22 importada do anexo `modern-angular.zip`, com os componentes oficiais do GOV.BR. A aplicação permite consultar um acervo de demonstração e ler dispositivos normativos estruturados.
+Base Angular 22 importada do anexo `modern-angular.zip`, com os componentes oficiais do GOV.BR. O acervo inclui a Resolução CNPq nº 1/2023 fornecida em JSON e os dois exemplos fictícios originais.
 
 ## Executar
 
@@ -29,7 +29,7 @@ O build inicial inclui cerca de 1,84 MB sem compressão (aproximadamente 218 kB 
 
 ## Organização e referências
 
-Validação desta entrega: instalação com npm 11.19.1, build de produção, 20 testes unitários e 10 testes de navegador (desktop e celular) concluídos com sucesso. O servidor também foi reiniciado após a reinstalação das dependências.
+Validação desta entrega: instalação com npm 11.19.1, build de produção, 31 testes unitários e 16 testes de navegador (desktop e celular) concluídos com sucesso. O servidor também foi reiniciado após a reinstalação das dependências.
 
 - [Arquitetura, convenções de nomes e signals](docs/arquitetura.md).
 - [Redação normativa, fontes oficiais e limites do parser](docs/redacao-normativa.md).
@@ -37,13 +37,15 @@ Validação desta entrega: instalação com npm 11.19.1, build de produção, 20
 - Modelo de leitura e parser: `src/app/shared/normas/`.
 - Apresentação do documento: `src/app/shared/components/norma-documento/`.
 
-Os dois documentos do acervo são fictícios e identificados como demonstração. Não há backend, autenticação, importação de PDF/HTML ou validação do schema JSON completo. O texto colado no leitor é processado em memória no navegador.
+A resolução importada está em `/normas/cnpq-resolucao-1-2023`; os exemplos anteriores continuam nos mesmos endereços. O índice lateral tem capítulos, seções e subseções recolhíveis e prévias dos artigos limitadas a 90 caracteres, com `...` quando necessário. As duas tabelas do anexo preservam células vazias e mescladas. A situação permanece “não verificada” e a publicação, não informada, como no JSON.
+
+Não há backend, autenticação, importação direta de PDF/HTML ou validação do schema JSON completo. O JSON incluído no projeto recebe validação estrutural antes da adaptação. O texto colado no leitor é processado em memória no navegador.
 
 ## Situação das fontes oficiais
 
 Foram identificadas a LC nº 95/1998, o Decreto nº 12.002/2024 e o Manual de Redação da Presidência da República. A leitura online e a verificação da redação vigente estão pendentes: a política de rede do ambiente bloqueou os sites oficiais. As referências e as decisões provisórias de apresentação estão registradas no documento de redação normativa.
 
-O fragmento do schema fornecido foi incorporado às interfaces de fonte, publicação e extração. O modelo `NormaLeitura` não substitui `norma.schema.json`; a integração exata requer o schema e o JSON de exemplo completos.
+O fragmento do schema foi incorporado às interfaces de metadados e o JSON de exemplo integral já está incluído em `src/app/shared/normas/dados/`. O modelo `NormaLeitura` e a validação estrutural não substituem `norma.schema.json`, que continua necessário para verificar todas as regras do contrato.
 
 ## Ambiente na nuvem
 

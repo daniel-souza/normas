@@ -9,19 +9,13 @@
   </details>
 }
 <div class="leitura-layout">
-  @if (artigos().length) {
-    <nav class="sumario" aria-label="Artigos do documento">
-      <h2 class="h5 mt-0">Neste documento</h2>
-      <ul>
-        @for (artigo of artigos(); track artigo.id) {
-          <li>
-            <a [href]="'#' + prefixo() + '-' + artigo.id" (click)="irPara(artigo.id, $event)">{{
-              artigo.rotulo
-            }}</a>
-          </li>
-        }
-      </ul>
-    </nav>
+  @if (indice().length) {
+    <app-indice-norma
+      class="sumario"
+      [itens]="indice()"
+      [prefixo]="prefixo()"
+      (selecionar)="irPara($event)"
+    />
   }
   <article class="documento" aria-label="Texto normativo">
     @if (epigrafe()) {
@@ -33,29 +27,9 @@
     @if (preambulo()) {
       <p class="preambulo">{{ preambulo() }}</p>
     }
-    @for (bloco of leitura().blocos; track bloco.id) {
-      @switch (bloco.tipo) {
-        @case ('agrupamento') {
-          <h3 class="agrupamento">{{ bloco.texto }}</h3>
-        }
-        @case ('titulo') {
-          <p class="titulo-agrupamento">{{ bloco.texto }}</p>
-        }
-        @default {
-          <p
-            class="dispositivo"
-            [class.artigo]="bloco.tipo === 'artigo'"
-            [id]="prefixo() + '-' + bloco.id"
-            [attr.data-tipo]="bloco.tipo"
-            [attr.data-pai]="bloco.paiId ? prefixo() + '-' + bloco.paiId : null"
-            [style.--nivel]="bloco.profundidade"
-            tabindex="-1"
-          >
-            {{ bloco.original }}
-          </p>
-        }
-      }
-    } @empty {
+    @if (leitura().blocos.length) {
+      <app-conteudo-norma [blocos]="leitura().blocos" [prefixo]="prefixo()" />
+    } @else {
       <p>Insira o texto para iniciar a leitura.</p>
     }
     @for (assinatura of assinaturas(); track $index) {

@@ -1,24 +1,19 @@
 :host {
   display: block;
 }
-
 .leitura-layout {
   display: flex;
   align-items: start;
-  gap: var(--spacing-scale-5x);
+  gap: var(--spacing-scale-4x);
 }
-
 .sumario {
-  flex: 0 0 11rem;
+  flex: 0 0 clamp(15rem, 25vw, 21rem);
   position: sticky;
   top: var(--spacing-scale-3x);
-}
-.sumario ul {
-  list-style: none;
-  padding: 0;
-}
-.sumario li {
-  margin-block: var(--spacing-scale-base);
+  max-height: calc(100dvh - var(--spacing-scale-6x));
+  overflow-y: auto;
+  padding-inline-end: var(--spacing-scale-base);
+  overscroll-behavior: contain;
 }
 .documento {
   flex: 1;
@@ -35,30 +30,10 @@
   margin-inline-start: 45%;
   margin-block: var(--spacing-scale-4x);
 }
-.agrupamento,
-.titulo-agrupamento,
 .assinatura {
   text-align: center;
-}
-.agrupamento {
-  font-size: inherit;
-  margin-top: var(--spacing-scale-4x);
-  margin-bottom: var(--spacing-scale-base);
-}
-.titulo-agrupamento {
-  font-weight: var(--font-weight-semi-bold);
-}
-.dispositivo {
-  white-space: pre-wrap;
-  margin-inline-start: calc(var(--nivel, 0) * var(--spacing-scale-2x));
-}
-.artigo {
-  margin-top: var(--spacing-scale-3x);
-}
-.assinatura {
   margin-top: var(--spacing-scale-4x);
 }
-
 @media (max-width: 767px) {
   .leitura-layout {
     flex-direction: column;
@@ -66,29 +41,21 @@
   .sumario {
     position: static;
     flex-basis: auto;
+    width: 100%;
+    max-height: 24rem;
   }
-  .sumario ul {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-scale-2x);
+  .documento {
+    width: 100%;
   }
   .ementa {
     margin-inline-start: 15%;
   }
-  .dispositivo {
-    margin-inline-start: calc(var(--nivel, 0) * var(--spacing-scale-base));
-  }
 }
-
 @media print {
   .sumario {
     display: none;
   }
   .documento {
     max-width: none;
-  }
-  .dispositivo {
-    orphans: 3;
-    widows: 3;
   }
 }

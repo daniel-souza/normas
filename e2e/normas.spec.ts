@@ -4,18 +4,18 @@ test('busca, limpa filtros e inclui documentos revogados', async ({ page }) => {
   const erros: string[] = [];
   page.on('pageerror', (erro) => erros.push(erro.message));
   await page.goto('/');
-  await expect(page.getByRole('status')).toHaveText('1 norma encontrada');
+  await expect(page.getByRole('status')).toHaveText('2 normas encontradas');
   await page.getByRole('textbox', { name: 'Texto de pesquisa' }).fill('termo inexistente');
   await page.getByRole('button', { name: 'Buscar normas' }).click();
   await expect(page.getByRole('status')).toHaveText('0 normas encontradas');
   await page.getByRole('button', { name: 'Limpar filtros' }).click();
-  await expect(page.getByRole('status')).toHaveText('1 norma encontrada');
+  await expect(page.getByRole('status')).toHaveText('2 normas encontradas');
   await expect(page.getByRole('textbox', { name: 'Texto de pesquisa' })).toHaveValue('');
   // O checkbox oficial usa um label sobre o input; acionar o label é a interação do usuário.
   await page.locator('br-checkbox[name="incluirRevogadas"] label').click();
   await expect(page.getByRole('checkbox', { name: 'Incluir revogadas' })).toBeChecked();
   await page.getByRole('button', { name: 'Buscar normas' }).click();
-  await expect(page.getByRole('status')).toHaveText('2 normas encontradas');
+  await expect(page.getByRole('status')).toHaveText('3 normas encontradas');
   expect(erros).toEqual([]);
 });
 
@@ -26,13 +26,13 @@ test('filtra por categoria e mantém os filtros ao voltar do documento', async (
   await page.getByRole('option', { name: 'Resoluções Normativas', exact: true }).click();
   await page.getByRole('heading', { name: 'Filtros de busca' }).click();
   await page.getByRole('button', { name: 'Buscar normas' }).click();
-  await expect(page.getByRole('status')).toHaveText('1 norma encontrada');
+  await expect(page.getByRole('status')).toHaveText('2 normas encontradas');
   await page.getByRole('link', { name: /RESOLUÇÃO NORMATIVA DE DEMONSTRAÇÃO/ }).click();
   await expect(page.getByRole('heading', { name: 'Leitura da norma' })).toBeVisible();
   await expect(page.getByRole('article')).toContainText('Art. 2º');
   await page.getByRole('link', { name: 'Voltar à consulta' }).click();
   await expect(page.getByRole('checkbox', { name: 'Incluir revogadas' })).toBeChecked();
-  await expect(page.getByRole('status')).toHaveText('1 norma encontrada');
+  await expect(page.getByRole('status')).toHaveText('2 normas encontradas');
   await expect(
     page.getByRole('link', { name: /RESOLUÇÃO NORMATIVA DE DEMONSTRAÇÃO/ }),
   ).toBeVisible();
@@ -74,7 +74,7 @@ test('atualiza o leitor, navega pelo índice e preserva texto sem executar HTML'
   await expect(
     page.getByRole('navigation', { name: 'Artigos do documento' }).getByRole('link'),
   ).toHaveCount(2);
-  await page.getByRole('link', { name: 'Art. 10-A.', exact: true }).click();
+  await page.getByRole('link', { name: /^Art\. 10-A\./ }).click();
   await expect(page.locator('#leitor-linha-3')).toBeFocused();
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth)).toBe(
     true,

@@ -34,6 +34,8 @@ describe('Search', () => {
     );
     store.limpar();
     await fixture.whenStable();
-    expect(fixture.nativeElement.querySelector('[role="status"]').textContent).toContain('1 norma');
+    expect(fixture.nativeElement.querySelector('[role="status"]').textContent).toContain(
+      '2 normas',
+    );
   });
 });

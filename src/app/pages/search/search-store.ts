@@ -42,12 +42,14 @@ export class SearchStore {
         return (
           termos.every((termo) => texto.includes(termo)) &&
           (!filtros.categorias.length || filtros.categorias.includes(norma.categoria)) &&
-          (!filtros.dataInicio || norma.dataPublicacao >= filtros.dataInicio) &&
-          (!filtros.dataFim || norma.dataPublicacao <= filtros.dataFim) &&
+          (!filtros.dataInicio ||
+            (!!norma.dataPublicacao && norma.dataPublicacao >= filtros.dataInicio)) &&
+          (!filtros.dataFim ||
+            (!!norma.dataPublicacao && norma.dataPublicacao <= filtros.dataFim)) &&
           (filtros.incluirRevogadas || norma.situacao !== 'revogada')
         );
       })
-      .sort((a, b) => b.dataPublicacao.localeCompare(a.dataPublicacao));
+      .sort((a, b) => (b.dataPublicacao ?? '').localeCompare(a.dataPublicacao ?? ''));
   });
   readonly total = computed(() => this.encontrados().length);
   readonly totalPaginas = computed(() =>

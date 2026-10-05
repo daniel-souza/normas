@@ -1,0 +1,33 @@
+:host {
+  display: block;
+  overflow-wrap: anywhere;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+li + li {
+  margin-block-start: var(--spacing-scale-base);
+}
+details > ul {
+  padding-inline-start: var(--spacing-scale-2x);
+  margin-block-start: var(--spacing-scale-base);
+}
+summary {
+  cursor: pointer;
+  font-weight: var(--font-weight-semi-bold);
+  padding-block: var(--spacing-scale-base);
+}
+a {
+  display: block;
+  padding-block: var(--spacing-scale-base);
+}
+.rotulo {
+  font-weight: var(--font-weight-semi-bold);
+}
+.previa {
+  display: block;
+  font-size: var(--font-size-scale-down-01);
+  line-height: var(--font-line-height-medium);
+}

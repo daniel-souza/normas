@@ -2,6 +2,7 @@ import { DatePipe } from '@angular/common';
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { SearchStore } from '../search-store';
+import { SITUACOES_NORMA } from '../../../shared/normas/norma';
 
 @Component({
   selector: 'app-search-results',
@@ -11,4 +12,5 @@ import { SearchStore } from '../search-store';
 })
 export class SearchResults {
   readonly store = inject(SearchStore);
+  readonly situacoes = SITUACOES_NORMA;
 }

@@ -1,0 +1,3403 @@
+{
+  "versaoSchema": "1.0.0",
+  "id": "cnpq-resolucao-1-2023",
+  "tipo": "norma",
+  "identificacao": {
+    "orgao": "CNPq",
+    "especie": "Resolução Normativa",
+    "numero": "1",
+    "ano": 2023,
+    "dataAto": "2023-10-04",
+    "epigrafe": "RESOLUÇÃO CNPq Nº 1, DE 4 DE OUTUBRO DE 2023",
+    "titulo": "HABILITAÇÃO, ACESSO E USO DO EXTRATOR LATTES",
+    "ementa": "Regulamenta a habilitação, o acesso e o uso do Extrator Lattes pelas Instituições interessadas na obtenção de dados da Plataforma Lattes, para fins não comerciais.",
+    "processo": "01300.001730/2023-19"
+  },
+  "situacao": "nao_verificada",
+  "publicacoes": [],
+  "fontes": [
+    {
+      "id": "html-cnpq",
+      "url": "http://memoria2.cnpq.br/web/guest/view/-/journal_content/56_INSTANCE_0oED/10157/21350241",
+      "descricao": "HTML completo fornecido pelo usuário em Texto colado(20261005-180004).txt."
+    }
+  ],
+  "extracao": {
+    "data": "2026-10-05",
+    "metodo": "html",
+    "htmlOriginalObtido": true,
+    "layoutTabelas": "original",
+    "sha256Html": "e5a970b67125af48fe6864db2508ed35c741eca850e449bd5c7ed5bb3545ec8e",
+    "observacoes": [
+      "Extração do contêiner .norma-texto; menus, scripts e outros elementos do portal excluídos.",
+      "Duas tabelas preservadas em sua ordem: instruções de preenchimento e formulário de habilitação. Linhas, células vazias, colspan e rowspan extraídos do HTML.",
+      "Dimensões em pixels e alinhamento mantidos como dicas opcionais de apresentação. A fidelidade é estrutural; não inclui as folhas de estilo externas do portal.",
+      "Espaços de indentação normalizados; parágrafos vazios fora das tabelas descartados. Quebras explícitas br preservadas como nova linha nos trechos de texto.",
+      "A fonte repete CAPÍTULO I antes de REGULAMENTO. Rótulos originais mantidos, com IDs distintos.",
+      "Espécie catalogada como Resolução Normativa conforme a denominação no texto. Epígrafe mantida literalmente como RESOLUÇÃO CNPq.",
+      "Situação jurídica atual não verificada. Data de publicação não informada no HTML; não foi inferida da data do ato."
+    ]
+  },
+  "conteudo": [
+    {
+      "id": "texto-0001",
+      "tipo": "texto",
+      "trechos": [
+        {
+          "texto": "O Presidente do CONSELHO NACIONAL DE DESENVOLVIMENTO CIENTÍFICO E TECNOLÓGICO - CNPq, no uso das atribuições que lhe são conferidas pelo Estatuto aprovado pelo Decreto nº 11.229, de 7 de outubro de 2022, em conformidade com o disposto nas Lei nº 13.243, de 11 de janeiro de 2016, Lei nº 8.958, de 20 de dezembro de 1994, Lei nº 10.973, de 2 de dezembro de 2004, Lei nº 13.709, de 14 de agosto de 2018, Decreto nº 9.283, de 7 de fevereiro de 2018, Decreto nº 10.046, de 09 de outubro 2019, Resolução MCTI nº 577, de 4 de junho de 2014, e nos termos do processo nº 01300.001730/2023-19, resolve:"
+        }
+      ]
+    },
+    {
+      "id": "capitulo-1",
+      "tipo": "parte",
+      "categoria": "capitulo",
+      "conteudo": [
+        {
+          "id": "art-1",
+          "tipo": "parte",
+          "categoria": "artigo",
+          "conteudo": [
+            {
+              "id": "texto-0002",
+              "tipo": "texto",
+              "trechos": [
+                {
+                  "texto": "Esta Resolução Normativa regulamenta a habilitação, o acesso e o uso do Extrator Lattes pelas instituições interessadas na obtenção de dados ostensivos já disponíveis na busca pública da Plataforma Lattes, para fins não comerciais."
+                }
+              ]
+            }
+          ],
+          "rotulo": "Art. 1º",
+          "numero": "1"
+        },
+        {
+          "id": "art-2",
+          "tipo": "parte",
+          "categoria": "artigo",
+          "conteudo": [
+            {
+              "id": "texto-0003",
+              "tipo": "texto",
+              "trechos": [
+                {
+                  "texto": "Para os fins desta Resolução Normativa, considera-se:"
+                }
+              ]
+            },
+            {
+              "id": "inciso-0004",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0005",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "habilitação ao Extrator Lattes: verificação dos requisitos de exigibilidade da instituição com fins ao acesso ao Extrator Lattes;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "I -",
+              "numero": "I"
+            },
+            {
+              "id": "inciso-0006",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0007",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "acesso ao Extrator Lattes: operação das funcionalidades disponíveis no Extrator Lattes;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "II -",
+              "numero": "II"
+            },
+            {
+              "id": "inciso-0008",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0009",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "uso do Extrator Lattes: potencial adquirido pela instituição para tratamento dos dados oriundos da Plataforma Lattes;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "III -",
+              "numero": "III"
+            },
+            {
+              "id": "inciso-0010",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0011",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "dado pessoal: informação relacionada a pessoa natural identificada ou identificável;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "IV -",
+              "numero": "IV"
+            },
+            {
+              "id": "inciso-0012",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0013",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "dado pessoal sensível: dado pessoal sobre origem racial ou étnica, convicção religiosa, opinião política, filiação a sindicato ou a organização de caráter religioso, filosófico ou político, dado referente à saúde ou à vida sexual, dado genético ou biométrico, quando vinculado a uma pessoa natural;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "V -",
+              "numero": "V"
+            },
+            {
+              "id": "inciso-0014",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0015",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "dados ostensivos: aqueles já disponíveis na busca pública da Plataforma Lattes;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "VI -",
+              "numero": "VI"
+            },
+            {
+              "id": "inciso-0016",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0017",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "controlador: pessoa natural ou jurídica, de direito público ou privado, a quem competem as decisões referentes ao tratamento de dados pessoais;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "VII -",
+              "numero": "VII"
+            },
+            {
+              "id": "inciso-0018",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0019",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "operador: pessoa natural ou jurídica, de direito público ou privado, que realiza o tratamento de dados pessoais em nome do controlador;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "VIII -",
+              "numero": "VIII"
+            },
+            {
+              "id": "inciso-0020",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0021",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "agentes de tratamento: o controlador e o operador;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "IX -",
+              "numero": "IX"
+            },
+            {
+              "id": "inciso-0022",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0023",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "dado anonimizado: dado relativo a titular que não possa ser identificado, considerando a utilização de meios técnicos razoáveis e disponíveis na ocasião de seu tratamento;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "X -",
+              "numero": "X"
+            },
+            {
+              "id": "inciso-0024",
+              "tipo": "parte",
+              "categoria": "inciso",
+              "conteudo": [
+                {
+                  "id": "texto-0025",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "tratamento: toda operação realizada com dados pessoais, como as que se referem a coleta, produção, recepção, classificação, utilização, acesso, reprodução, transmissão, distribuição, processamento, arquivamento, armazenamento, eliminação, avaliação ou controle da informação, modificação, comunicação, transferência, difusão ou extração."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "XI -",
+              "numero": "XI"
+            }
+          ],
+          "rotulo": "Art. 2º",
+          "numero": "2"
+        }
+      ],
+      "rotulo": "CAPÍTULO I",
+      "numero": "I",
+      "titulo": "DISPOSIÇÕES PRELIMINARES"
+    },
+    {
+      "id": "capitulo-2",
+      "tipo": "parte",
+      "categoria": "capitulo",
+      "conteudo": [
+        {
+          "id": "secao-0026",
+          "tipo": "parte",
+          "categoria": "secao",
+          "conteudo": [
+            {
+              "id": "art-3",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0027",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "A extração de dados oriundos da Plataforma Lattes a partir do Extrator Lattes possui os seguintes objetivos:"
+                    }
+                  ]
+                },
+                {
+                  "id": "inciso-0028",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0029",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "auxiliar as instituições na integração dos dados da Plataforma Lattes aos seus sistemas de informação;"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "I -",
+                  "numero": "I"
+                },
+                {
+                  "id": "inciso-0030",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0031",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "gerar indicadores internos de produção científica e tecnológica;"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "II -",
+                  "numero": "II"
+                },
+                {
+                  "id": "inciso-0032",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0033",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "subsidiar estudos através da aplicação de ferramentas de mineração de dados; e"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "III -",
+                  "numero": "III"
+                },
+                {
+                  "id": "inciso-0034",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0035",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "apoiar a formulação e a implementação de políticas de gestão das instituições participantes."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "IV -",
+                  "numero": "IV"
+                },
+                {
+                  "id": "paragrafo-0036",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0037",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "É vedada a utilização do Extrator Lattes e das informações obtidas por meio dele para fins comerciais."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "Parágrafo único.",
+                  "numero": "unico"
+                }
+              ],
+              "rotulo": "Art. 3º",
+              "numero": "3"
+            }
+          ],
+          "rotulo": "Seção I",
+          "numero": "I",
+          "titulo": "Do objetivo"
+        },
+        {
+          "id": "secao-0038",
+          "tipo": "parte",
+          "categoria": "secao",
+          "conteudo": [
+            {
+              "id": "art-4",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0039",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "O CNPq permitirá a extração dos dados públicos cadastrados na Base de Currículos Lattes e no Diretório dos Grupos de Pesquisa por meio de sistema web, de sua propriedade, denominado Extrator Lattes."
+                    }
+                  ]
+                },
+                {
+                  "id": "paragrafo-0040",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0041",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "O Extrator Lattes possui funcionalidade que permite a validação dos currículos e dados oriundos da Plataforma Lattes face aos dados pessoais sob controle da instituição, em atendimento ao que preconiza a Lei Geral de Proteção de Dados, de 14 de agosto de 2018 e as autorizações dos titulares dos dados."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "Parágrafo único.",
+                  "numero": "unico"
+                }
+              ],
+              "rotulo": "Art. 4º",
+              "numero": "4"
+            }
+          ],
+          "rotulo": "Seção II",
+          "numero": "II",
+          "titulo": "Do Extrator de Dados Lattes"
+        },
+        {
+          "id": "secao-0042",
+          "tipo": "parte",
+          "categoria": "secao",
+          "conteudo": [
+            {
+              "id": "art-5",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0043",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Poderão solicitar Habilitação e Acesso ao Extrator Lattes:"
+                    }
+                  ]
+                },
+                {
+                  "id": "inciso-0044",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0045",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Instituição Científica, Tecnológica e de Inovação (ICT): órgão ou entidade da administração pública direta ou indireta ou pessoa jurídica de direito privado sem fins lucrativos legalmente constituída sob as leis brasileiras, com sede e foro no País, que inclua em sua missão institucional ou em seu objetivo social ou estatutário a pesquisa básica ou aplicada de caráter científico ou tecnológico ou o desenvolvimento de novos produtos, serviços ou processos (Art. 2º, inciso V, Lei nº. 13.243, de 2016 e Decreto nº 9.283, de 2018);"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "I -",
+                  "numero": "I"
+                },
+                {
+                  "id": "inciso-0046",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0047",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Fundação de apoio: fundação criada com a finalidade de dar apoio a projetos de pesquisa, ensino e extensão, projetos de desenvolvimento institucional, científico, tecnológico e projetos de estímulo à inovação de interesse das ICTs, registrada e credenciada no Ministério da Educação e no Ministério da Ciência, Tecnologia e Inovação, nos termos da Lei nº 8.958, de 1994, e das demais legislações pertinentes nas esferas estadual, distrital e municipal (Art. 2º, inciso VII, Lei nº. 13.243, de 2016);"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "II -",
+                  "numero": "II"
+                },
+                {
+                  "id": "inciso-0048",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0049",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Agências de fomento: órgão ou instituição de natureza pública ou privada que tenha entre os seus objetivos o financiamento de ações que visem a estimular e promover o desenvolvimento da ciência, da tecnologia e da inovação (Art. 2º, inciso I, Lei nº. 10.973, de 2004);"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "III -",
+                  "numero": "III"
+                },
+                {
+                  "id": "inciso-0050",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0051",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Núcleo de Inovação Tecnológica (NIT): núcleo ou órgão constituído por uma ou mais ICT com a finalidade de gerir sua política de inovação (Art. 2º, inciso VI, Lei Federal nº. 10.973, de 2004);"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "IV -",
+                  "numero": "IV"
+                },
+                {
+                  "id": "inciso-0052",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0053",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Institutos Nacionais de Ciência e Tecnologia (INCT): estruturas de pesquisa que desenvolvem articuladamente propostas em rede, de caráter interdisciplinar, e com objetivos e metas claramente definidos e mensuráveis, com foco nas áreas estratégicas para o País e em pesquisas na fronteira do conhecimento, conforme regulado pela Resolução MCTI nº 577, de 2014, com as alterações introduzidas pela Resolução MCTI nº 5.902, de 16 de maio de 2022;"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "V -",
+                  "numero": "V"
+                },
+                {
+                  "id": "inciso-0054",
+                  "tipo": "parte",
+                  "categoria": "inciso",
+                  "conteudo": [
+                    {
+                      "id": "texto-0055",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Órgão de pesquisa: órgão ou entidade da administração pública direta ou indireta ou pessoa jurídica de direito privado sem fins lucrativos legalmente constituída sob as leis brasileiras, com sede e foro no País, que inclua em sua missão institucional ou em seu objetivo social ou estatutário a pesquisa básica ou aplicada de caráter histórico, científico, tecnológico ou estatístico, conforme inciso XVIII do art. 5º da Lei 13.709, de 2018."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "VI -",
+                  "numero": "VI"
+                }
+              ],
+              "rotulo": "Art. 5º",
+              "numero": "5"
+            },
+            {
+              "id": "art-6",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0056",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "A solicitação de habilitação e de uso do Extrator Lattes deverá ser efetuada pelo Dirigente Institucional ou por Responsável Técnico por ele indicado, cadastrados no Diretório de Instituições ¿ DI do CNPq (disponível em "
+                    },
+                    {
+                      "texto": "http://di.cnpq.br/di/index.jsp",
+                      "href": "http://di.cnpq.br/di/index.jsp"
+                    },
+                    {
+                      "texto": "), através do preenchimento do Formulário de Habilitação e do Termo de Responsabilidade (Anexo I)."
+                    }
+                  ]
+                },
+                {
+                  "id": "paragrafo-0057",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0058",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Para que a Instituição tenha sua habilitação aprovada e acesso disponibilizado é obrigatório que o seu cadastro esteja ativo e atualizado no DI do CNPq."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "§ 1º",
+                  "numero": "1"
+                },
+                {
+                  "id": "paragrafo-0059",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0060",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "A Instituição deverá informar ao CNPq eventuais alterações cadastrais, sob o risco de revogação de seu acesso ao Extrator Lattes."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "§ 2º",
+                  "numero": "2"
+                },
+                {
+                  "id": "paragrafo-0061",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0062",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "A Instituição poderá designar pessoa física a ela vinculada para acesso aos dados extraídos por meio do Extrator Lattes, cuja atuação se dará em estrita observância à finalidade específica indicada no Formulário de Habilitação, por meio da assinatura de Termo de Responsabilidade e mediante fiscalização e responsabilização da Instituição habilitada."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "§ 3º",
+                  "numero": "3"
+                },
+                {
+                  "id": "paragrafo-0063",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0064",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "O Formulário de Habilitação e o Termo de Responsabilidade deverão ser enviados ao CNPq, apenas em formato digital (pdf*), através de mensagem eletrônica endereçada à Central de Atendimento do CNPq ("
+                        },
+                        {
+                          "texto": "atendimento@cnpq.br",
+                          "href": "mailto:atendimento@cnpq.br"
+                        },
+                        {
+                          "texto": ")."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "§ 4º",
+                  "numero": "4"
+                }
+              ],
+              "rotulo": "Art. 6º",
+              "numero": "6"
+            }
+          ],
+          "rotulo": "Seção III",
+          "numero": "III",
+          "titulo": "Da habilitação"
+        },
+        {
+          "id": "secao-0065",
+          "tipo": "parte",
+          "categoria": "secao",
+          "conteudo": [
+            {
+              "id": "art-7",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0066",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "O Extrator Lattes permitirá a extração dos dados ostensivos já disponíveis na busca pública da Plataforma Lattes."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "Art. 7º",
+              "numero": "7"
+            },
+            {
+              "id": "art-8",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0067",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Tanto o acesso ao Extrator Lattes, quanto o uso de seus dados deverão atender estritamente à(s) finalidade(s) descrita(s) no Formulário de Habilitação."
+                    }
+                  ]
+                },
+                {
+                  "id": "paragrafo-0068",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0069",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "A disponibilização de acesso e/ou o compartilhamento de dados pessoais, inclusive os de natureza sensível, para fins de realização de estudos e pesquisas, especialmente por órgãos de pesquisa e respectivos pesquisadores, deverão observar as salvaguardas técnicas e jurídicas apropriadas e proporcionais aos riscos envolvidos;"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "§ 1º",
+                  "numero": "1"
+                },
+                {
+                  "id": "paragrafo-0070",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0071",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "O acesso ou compartilhamento deverão observar ainda a estrita vinculação do tratamento à finalidade de realização de estudos e pesquisas, conforme melhores práticas previstas pela Autoridade Nacional de Proteção de Dados (ANPD)."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "§ 2º",
+                  "numero": "2"
+                }
+              ],
+              "rotulo": "Art. 8º",
+              "numero": "8"
+            },
+            {
+              "id": "art-9",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0072",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Dados pessoais são restritos e somente serão acessados por instituições públicas, listadas pelo art. 4º desta Resolução, por meio do atendimento das exigências estabelecidas na Lei nº 13.709, de 2018, e, no que couber, pelo Decreto nº 10.046, de 2019 que dispõe sobre a governança no compartilhamento de dados."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "Art. 9º",
+              "numero": "9"
+            },
+            {
+              "id": "art-10",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0073",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "É dever da Instituição a constante atualização das informações prestadas no Formulário de Habilitação e no Termo de Responsabilidade, com especial destaque à informação sobre o Responsável Técnico nas Instituições e os IPs ("
+                    },
+                    {
+                      "texto": "Internet Protocol",
+                      "marcas": [
+                        "negrito"
+                      ]
+                    },
+                    {
+                      "texto": ") em uso, sob o risco de revogação da habilitação e acesso ao Extrator."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "Art. 10.",
+              "numero": "10"
+            },
+            {
+              "id": "art-11",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0074",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "A Instituição e/ou pessoa que fizer uso dos dados da Plataforma Lattes de forma indevida, não-autorizada ou em desacordo com os compromissos firmados no Termo de Responsabilidade, ficará sujeita à responsabilização administrativa, penal e cível previstas na legislação."
+                    }
+                  ]
+                },
+                {
+                  "id": "paragrafo-0075",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0076",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "As seguintes condutas constituem infrações, ilícitos, ou uso indevido:"
+                        }
+                      ]
+                    },
+                    {
+                      "id": "alinea-0077",
+                      "tipo": "parte",
+                      "categoria": "alinea",
+                      "conteudo": [
+                        {
+                          "id": "texto-0078",
+                          "tipo": "texto",
+                          "trechos": [
+                            {
+                              "texto": "o acesso não autorizado;"
+                            }
+                          ]
+                        }
+                      ],
+                      "rotulo": "a)",
+                      "numero": "a"
+                    },
+                    {
+                      "id": "alinea-0079",
+                      "tipo": "parte",
+                      "categoria": "alinea",
+                      "conteudo": [
+                        {
+                          "id": "texto-0080",
+                          "tipo": "texto",
+                          "trechos": [
+                            {
+                              "texto": "o acesso não motivado por necessidade de serviço;"
+                            }
+                          ]
+                        }
+                      ],
+                      "rotulo": "b)",
+                      "numero": "b"
+                    },
+                    {
+                      "id": "alinea-0081",
+                      "tipo": "parte",
+                      "categoria": "alinea",
+                      "conteudo": [
+                        {
+                          "id": "texto-0082",
+                          "tipo": "texto",
+                          "trechos": [
+                            {
+                              "texto": "a disponibilização voluntária ou acidental da senha de acesso;"
+                            }
+                          ]
+                        }
+                      ],
+                      "rotulo": "c)",
+                      "numero": "c"
+                    },
+                    {
+                      "id": "alinea-0083",
+                      "tipo": "parte",
+                      "categoria": "alinea",
+                      "conteudo": [
+                        {
+                          "id": "texto-0084",
+                          "tipo": "texto",
+                          "trechos": [
+                            {
+                              "texto": "a disponibilização não autorizada de informações contidas na ferramenta;"
+                            }
+                          ]
+                        }
+                      ],
+                      "rotulo": "d)",
+                      "numero": "d"
+                    },
+                    {
+                      "id": "alinea-0085",
+                      "tipo": "parte",
+                      "categoria": "alinea",
+                      "conteudo": [
+                        {
+                          "id": "texto-0086",
+                          "tipo": "texto",
+                          "trechos": [
+                            {
+                              "texto": "a quebra do sigilo relativo a informações contidas na ferramenta; e"
+                            }
+                          ]
+                        }
+                      ],
+                      "rotulo": "e)",
+                      "numero": "e"
+                    },
+                    {
+                      "id": "alinea-0087",
+                      "tipo": "parte",
+                      "categoria": "alinea",
+                      "conteudo": [
+                        {
+                          "id": "texto-0088",
+                          "tipo": "texto",
+                          "trechos": [
+                            {
+                              "texto": "a disponibilização de portas (abertas) para acesso anônimo ou não identificado de equipamentos que acessem o Extrator Lattes;"
+                            }
+                          ]
+                        }
+                      ],
+                      "rotulo": "f)",
+                      "numero": "f"
+                    },
+                    {
+                      "id": "alinea-0089",
+                      "tipo": "parte",
+                      "categoria": "alinea",
+                      "conteudo": [
+                        {
+                          "id": "texto-0090",
+                          "tipo": "texto",
+                          "trechos": [
+                            {
+                              "texto": "a utilização do Extrator Lattes para outros fins além daqueles descritos no art. 7º desta Resolução e no Formulário de Habilitação, ressalvadas as disposições legais em contrário."
+                            }
+                          ]
+                        }
+                      ],
+                      "rotulo": "g)",
+                      "numero": "g"
+                    }
+                  ],
+                  "rotulo": "Parágrafo único.",
+                  "numero": "unico"
+                }
+              ],
+              "rotulo": "Art. 11.",
+              "numero": "11"
+            },
+            {
+              "id": "art-12",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0091",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "A Instituição deverá comunicar imediatamente ao CNPq qualquer acontecimento que comprometa a integridade dos dados obtidos por meio do Extrator Lattes."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "Art. 12.",
+              "numero": "12"
+            },
+            {
+              "id": "art-13",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0092",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "O CNPq pode, a qualquer tempo, cancelar o acesso ao Extrator Lattes, em atendimento à sua Política de Segurança da Informação (PoSIN) ou ao identificar o uso indevido do serviço e/ou dos dados obtidos."
+                    }
+                  ]
+                },
+                {
+                  "id": "paragrafo-0093",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0094",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Os agentes de tratamento, os controladores ou qualquer outra pessoa que intervenha em uma das fases de tratamento, assim como os sistemas utilizados para o tratamento de dados pessoais devem forçosamente cumprir os requisitos elencados para a segurança e o sigilo de dados, conforme o disposto na Seção I do Capítulo VII - Da segurança e das boas práticas da LGPD."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "Parágrafo único.",
+                  "numero": "unico"
+                }
+              ],
+              "rotulo": "Art. 13.",
+              "numero": "13"
+            },
+            {
+              "id": "art-14",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0095",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "O CNPq encaminhará à Instituição as justificativas de cancelamento do acesso em até 10 (dez) dias, a contar da data do cancelamento."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "Art.14.",
+              "numero": "14"
+            },
+            {
+              "id": "art-15",
+              "tipo": "parte",
+              "categoria": "artigo",
+              "conteudo": [
+                {
+                  "id": "texto-0096",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "O período de duração do uso compartilhado de dados, com a possibilidade de conservação dos mesmos após o término do tratamento, será de 48 (quarenta e oito) meses contínuos."
+                    }
+                  ]
+                },
+                {
+                  "id": "paragrafo-0097",
+                  "tipo": "parte",
+                  "categoria": "paragrafo",
+                  "conteudo": [
+                    {
+                      "id": "texto-0098",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Será permitida uma renovação automática pelo mesmo período da vigência inicial, desde que solicitada ao CNPq até 30 (trinta) dias antes da data de vencimento, através de mensagem eletrônica endereçada à Central de Atendimento do CNPq ("
+                        },
+                        {
+                          "texto": "atendimento@cnpq.br",
+                          "href": "mailto:atendimento@cnpq.br"
+                        },
+                        {
+                          "texto": ")."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "Parágrafo único.",
+                  "numero": "unico"
+                }
+              ],
+              "rotulo": "Art. 15.",
+              "numero": "15"
+            }
+          ],
+          "rotulo": "Seção IV",
+          "numero": "IV",
+          "titulo": "Da utilização do Extrator Lattes e dos dados obtidos"
+        }
+      ],
+      "rotulo": "CAPÍTULO I",
+      "numero": "I",
+      "titulo": "REGULAMENTO"
+    },
+    {
+      "id": "capitulo-3",
+      "tipo": "parte",
+      "categoria": "capitulo",
+      "conteudo": [
+        {
+          "id": "art-16",
+          "tipo": "parte",
+          "categoria": "artigo",
+          "conteudo": [
+            {
+              "id": "texto-0099",
+              "tipo": "texto",
+              "trechos": [
+                {
+                  "texto": "As instituições ou usuários que já fazem uso do Extrator Lattes serão acionadas a qualquer momento pelo CNPq para se adequarem às disposições desta Resolução ou outras relacionadas."
+                }
+              ]
+            }
+          ],
+          "rotulo": "Art. 16.",
+          "numero": "16"
+        },
+        {
+          "id": "art-17",
+          "tipo": "parte",
+          "categoria": "artigo",
+          "conteudo": [
+            {
+              "id": "texto-0100",
+              "tipo": "texto",
+              "trechos": [
+                {
+                  "texto": "Sempre que solicitado pelo CNPq, a Instituição deverá fornecer informações, dados de resultados, metodologias e sistemas desenvolvidos, dentre outros frutos de utilização do Extrator Lattes."
+                }
+              ]
+            }
+          ],
+          "rotulo": "Art. 17.",
+          "numero": "17"
+        },
+        {
+          "id": "art-18",
+          "tipo": "parte",
+          "categoria": "artigo",
+          "conteudo": [
+            {
+              "id": "texto-0101",
+              "tipo": "texto",
+              "trechos": [
+                {
+                  "texto": "Os casos omissos serão apreciados inicialmente pela Gerência de Plataformas e Serviços Digitais (GPLAT) e, no que couber, direcionados às instâncias competentes no CNPq."
+                }
+              ]
+            }
+          ],
+          "rotulo": "Art. 18.",
+          "numero": "18"
+        },
+        {
+          "id": "art-19",
+          "tipo": "parte",
+          "categoria": "artigo",
+          "conteudo": [
+            {
+              "id": "texto-0102",
+              "tipo": "texto",
+              "trechos": [
+                {
+                  "texto": "As dúvidas e os pedidos de encerramento de acesso ao serviço do Extrator Lattes deverão ser comunicados ao CNPq através de mensagem eletrônica endereçada à Central de Atendimento do CNPq ("
+                },
+                {
+                  "texto": "atendimento@cnpq.br",
+                  "href": "mailto:atendimento@cnpq.br"
+                },
+                {
+                  "texto": ")."
+                }
+              ]
+            }
+          ],
+          "rotulo": "Art. 19.",
+          "numero": "19"
+        },
+        {
+          "id": "art-20",
+          "tipo": "parte",
+          "categoria": "artigo",
+          "conteudo": [
+            {
+              "id": "texto-0103",
+              "tipo": "texto",
+              "trechos": [
+                {
+                  "texto": "Esta Resolução Normativa entra em vigor sete dias após a data da sua publicação."
+                }
+              ]
+            }
+          ],
+          "rotulo": "Art. 20.",
+          "numero": "20"
+        }
+      ],
+      "rotulo": "CAPÍTULO III",
+      "numero": "III",
+      "titulo": "DISPOSIÇÕES FINAIS"
+    },
+    {
+      "id": "assinatura-ato",
+      "tipo": "parte",
+      "categoria": "assinatura",
+      "conteudo": [
+        {
+          "id": "texto-0104",
+          "tipo": "texto",
+          "trechos": [
+            {
+              "texto": "("
+            },
+            {
+              "texto": "Assinada eletronicamente",
+              "marcas": [
+                "italico"
+              ]
+            },
+            {
+              "texto": ")\n "
+            },
+            {
+              "texto": "RICARDO MAGNUS OSÓRIO GALVÃO",
+              "marcas": [
+                "negrito"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "anexo-i",
+      "tipo": "parte",
+      "categoria": "anexo",
+      "conteudo": [
+        {
+          "id": "instrucoes-habilitacao",
+          "tipo": "tabela",
+          "numeroColunas": 1,
+          "layout": "original",
+          "linhas": [
+            {
+              "id": "linha-0107",
+              "celulas": [
+                {
+                  "id": "celula-0106",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0105",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "INSTRUÇÕES DE PREENCHIMENTO DO FORMULÁRIO DE HABILITAÇÃO",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        }
+                      ],
+                      "apresentacao": {
+                        "alinhamento": "center"
+                      }
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 656.0,
+                    "alturaPx": 26.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0110",
+              "celulas": [
+                {
+                  "id": "celula-0109",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0108",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "1 - DADOS DA INSTITUIÇÃO REQUISITANTE",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        },
+                        {
+                          "texto": ": Informar dados da instituição solicitante do acesso ao Extrator Lattes. O Código da Instituição é um campo obrigatório."
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 656.0,
+                    "alturaPx": 43.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0113",
+              "celulas": [
+                {
+                  "id": "celula-0112",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0111",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "2 - DADOS DO SISTEMA CLIENTE",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        },
+                        {
+                          "texto": " "
+                        },
+                        {
+                          "texto": "- AMBIENTE DE HOMOLOGAÇÃO/PRODUÇÃO",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        },
+                        {
+                          "texto": ": Informar os dados do sistema que solicita acesso. Nos campos URL e endereço IP, deverão ser informados a URL da máquina que acessará o Extrator Lattes e o seu respectivo endereço IP. Somente com essas informações o acesso poderá ser concedido."
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 656.0,
+                    "alturaPx": 74.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0116",
+              "celulas": [
+                {
+                  "id": "celula-0115",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0114",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "3 - DADOS DO RESPONSÁVEL TÉCNICO",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        },
+                        {
+                          "texto": ": Indicação do responsável técnico pela utilização do serviço."
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 656.0,
+                    "alturaPx": 37.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0119",
+              "celulas": [
+                {
+                  "id": "celula-0118",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0117",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "4- DADOS DO REPRESENTANTE LEGAL",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        },
+                        {
+                          "texto": ": Dados do titular ou representante legal da Instituição requisitante."
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 656.0,
+                    "alturaPx": 37.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0122",
+              "celulas": [
+                {
+                  "id": "celula-0121",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0120",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "5 - FINALIDADE",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        },
+                        {
+                          "texto": ": Detalhar a motivação para o acesso. Caso haja previsão legal, citar a mesma."
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 656.0,
+                    "alturaPx": 27.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0125",
+              "celulas": [
+                {
+                  "id": "celula-0124",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0123",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "INFORMAÇÕES GERAIS",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        }
+                      ],
+                      "apresentacao": {
+                        "alinhamento": "center"
+                      }
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 656.0,
+                    "alturaPx": 26.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0132",
+              "celulas": [
+                {
+                  "id": "celula-0131",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0126",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Após o preenchimento do Formulário de Habilitação e do Termo de Responsabilidade, estes devem ser digitalizados (no formato pdf*) e encaminhados para a Central de Atendimento do CNPq, por meio do endereço eletrônico atendimento@cnpq.br, para que seja providenciado o cadastro e o envio das instruções ao responsável pela extração (demandante)."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "texto-0127",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    },
+                    {
+                      "id": "texto-0128",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Os documentos recebidos serão analisados e, caso a validação seja deferida, o cadastramento será realizado pelo CNPq, que comunicará a aprovação do cadastro ao Representante Institucional ou ao responsável Técnico indicado no Formulário de Habilitação."
+                        }
+                      ]
+                    },
+                    {
+                      "id": "texto-0129",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    },
+                    {
+                      "id": "texto-0130",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "Em caso de dúvidas (sobre procedimentos, implementação ou uso), enviar solicitação para o e-mail atendimento@cnpq.br"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 656.0,
+                    "alturaPx": 180.0
+                  }
+                }
+              ]
+            }
+          ],
+          "apresentacao": {
+            "bordaPx": 0,
+            "preenchimentoCelulasPx": 0,
+            "espacamentoCelulasPx": 0
+          }
+        },
+        {
+          "id": "texto-0133",
+          "tipo": "texto",
+          "trechos": [
+            {
+              "texto": "Observação: é obrigatório o preenchimento de todos os campos.",
+              "marcas": [
+                "negrito"
+              ]
+            }
+          ]
+        },
+        {
+          "id": "termo-responsabilidade",
+          "tipo": "parte",
+          "categoria": "grupo",
+          "conteudo": [
+            {
+              "id": "texto-0134",
+              "tipo": "texto",
+              "trechos": [
+                {
+                  "texto": "Por este Termo de Responsabilidade concordo que:"
+                }
+              ]
+            },
+            {
+              "id": "item-0135",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0136",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Terei acesso institucional ao sistema Extrator Lattes, o qual permite a extração de dados do Currículo Lattes e do Diretório de Grupos de Pesquisa no Brasil (DGP), partes integrantes da Plataforma Lattes."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "1.",
+              "numero": "1"
+            },
+            {
+              "id": "item-0137",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0138",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "As informações contidas na Plataforma Lattes possuem os dados ostensivos dos Currículos Lattes e do Diretório dos Grupos de Pesquisa. Dados pessoais são restritos e somente serão acessados por instituições públicas, por meio do atendimento das exigências estabelecidas na Lei nº 13.709, de 14 de agosto de 2018 e Decreto nº 10.046, de 09 de outubro 2019."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "2.",
+              "numero": "2"
+            },
+            {
+              "id": "item-0139",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0140",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "A extração tem o intuito de auxiliar a instituição a integrar os dados da Plataforma Lattes aos seus sistemas de informação, gerar indicadores internos de produção científica e tecnológica, realizar estudos através da aplicação de ferramentas de pesquisa de dados e apoiar a implementação de políticas de gestão e não será utilizada para fins comerciais."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "3.",
+              "numero": "3"
+            },
+            {
+              "id": "item-0141",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0142",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Compete a Instituição requisitante cooperar com o CNPq no cumprimento das obrigações referentes ao exercício dos direitos dos Titulares dos dados previstos na Lei Geral de Proteção de Dados Pessoais - LGPD e nas Leis e Regulamentos de Proteção de Dados em vigor, e no atendimento de requisições e determinações do Poder Judiciário, Ministério Público e Órgãos de controle administrativo."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "4.",
+              "numero": "4"
+            },
+            {
+              "id": "item-0143",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0144",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Comunicarei, imediatamente, ao CNPq, o resultado de auditoria realizada pela Autoridade Nacional de Proteção de Dados (ANPD), na medida em que esta diga respeito aos dados do Controlador. Caso sejam detectadas eventuais desconformidades, deverei corrigi-las dentro de um prazo razoável e informar ao CNPq a respeito;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "5.",
+              "numero": "5"
+            },
+            {
+              "id": "item-0145",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0146",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Informarei imediatamente ao CNPq quando receber qualquer solicitação de dados referentes ao extrator Lattes de um Titular de Dados;"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "6.",
+              "numero": "6"
+            },
+            {
+              "id": "item-0147",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0148",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Irei me abster de responder qualquer solicitação em relação aos dados pessoais do Titular de Dados do Extrator Lattes, exceto quando exigido pela LGPD."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "7.",
+              "numero": "7"
+            },
+            {
+              "id": "item-0149",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0150",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Adotarei medidas técnicas e administrativas adequadas a assegurar a proteção de dados (nos termos do artigo 46 da LGPD), de modo a garantir um nível apropriado de segurança aos dados pessoais tratados e mitigar possíveis riscos, respondendo a qualquer vazamento ou perda de dados."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "8.",
+              "numero": "8"
+            },
+            {
+              "id": "item-0151",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0152",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Notificarei o CNPq, imediatamente, de quaisquer intenções de transferências permanentes ou temporárias dos dados pessoais dos titulares para outro país, e somente realizarei tal transferência após obter autorização, por escrito, do Controlador, que pode ser negada a seu critério."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "9.",
+              "numero": "9"
+            },
+            {
+              "id": "item-0153",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0154",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Promoverei a exclusão, imediatamente, após notificação do CNPq, de todos os registros compartilhados de titulares que tenham solicitado a sua remoção da Base Lattes."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "10.",
+              "numero": "10"
+            },
+            {
+              "id": "item-0155",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0156",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Agirei em conformidade com a LGPD, bem como qualquer outra regulamentação aplicável ao tratamento de dados pessoais, responsabilizando-se integralmente por qualquer ação de descumprimento à legislação que vier a ocorrer nas minhas respectivas estruturas funcionais/estruturais, em ambiente físico ou digital."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "11.",
+              "numero": "11"
+            },
+            {
+              "id": "item-0157",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0158",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "O Titular Institucional e o Responsável Técnico indicados nos itens 4 e 5 do Formulário de Habilitação estarão sujeitos à responsabilização administrativa, penal e cível, pela utilização indevida das informações."
+                    }
+                  ]
+                },
+                {
+                  "id": "texto-0159",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "As seguintes condutas constituem infrações, ilícitos ou, ainda, uso indevido:"
+                    }
+                  ]
+                },
+                {
+                  "id": "alinea-0160",
+                  "tipo": "parte",
+                  "categoria": "alinea",
+                  "conteudo": [
+                    {
+                      "id": "texto-0161",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "o acesso não autorizado;"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "a)",
+                  "numero": "a"
+                },
+                {
+                  "id": "alinea-0162",
+                  "tipo": "parte",
+                  "categoria": "alinea",
+                  "conteudo": [
+                    {
+                      "id": "texto-0163",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "o acesso não motivado por necessidade de serviço;"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "b)",
+                  "numero": "b"
+                },
+                {
+                  "id": "alinea-0164",
+                  "tipo": "parte",
+                  "categoria": "alinea",
+                  "conteudo": [
+                    {
+                      "id": "texto-0165",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "a disponibilização voluntária ou acidental da senha de acesso;"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "c)",
+                  "numero": "c"
+                },
+                {
+                  "id": "alinea-0166",
+                  "tipo": "parte",
+                  "categoria": "alinea",
+                  "conteudo": [
+                    {
+                      "id": "texto-0167",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "a disponibilização não autorizada de informações contidas na ferramenta;"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "d)",
+                  "numero": "d"
+                },
+                {
+                  "id": "alinea-0168",
+                  "tipo": "parte",
+                  "categoria": "alinea",
+                  "conteudo": [
+                    {
+                      "id": "texto-0169",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "a quebra do sigilo relativo a informações contidas na ferramenta; e"
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "e)",
+                  "numero": "e"
+                },
+                {
+                  "id": "alinea-0170",
+                  "tipo": "parte",
+                  "categoria": "alinea",
+                  "conteudo": [
+                    {
+                      "id": "texto-0171",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "a disponibilização de portas (abertas) para acesso anônimo ou não identificado de equipamentos que acessem o Extrator Lattes."
+                        }
+                      ]
+                    }
+                  ],
+                  "rotulo": "f)",
+                  "numero": "f"
+                }
+              ],
+              "rotulo": "12.",
+              "numero": "12"
+            },
+            {
+              "id": "item-0172",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0173",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Atualizarei meu cadastro junto ao CNPq, sempre que necessário ou solicitado."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "13.",
+              "numero": "13"
+            },
+            {
+              "id": "item-0174",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0175",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Cumprirei o estabelecido na Resolução Normativa nº 1/2023, de 4 de outubro de 2023 - que regula a habilitação, acesso e uso do Extrator Lattes - e a Portaria nº 1.019, de 30 de agosto de 2022, que aprova e homologa a Política de Segurança da Informação do CNPq - PoSIN."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "14.",
+              "numero": "14"
+            },
+            {
+              "id": "item-0176",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0177",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Estou ciente de que o CNPq poderá cancelar a qualquer momento acesso da minha Instituição ao Extrator Lattes, em atendimento ao Interesse público, resguardo de sua PoSIN ou face ao uso indevido do serviço e/ou dados obtidos"
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "15.",
+              "numero": "15"
+            },
+            {
+              "id": "item-0178",
+              "tipo": "parte",
+              "categoria": "item",
+              "conteudo": [
+                {
+                  "id": "texto-0179",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "Comunicarei imediatamente ao CNPq sobre qualquer acontecimento que comprometa a integridade dos dados obtidos por meio do Extrator Lattes."
+                    }
+                  ]
+                }
+              ],
+              "rotulo": "16.",
+              "numero": "16"
+            },
+            {
+              "id": "assinatura-0180",
+              "tipo": "parte",
+              "categoria": "assinatura",
+              "conteudo": [
+                {
+                  "id": "texto-0181",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "___________________________________________\n (Assinatura e carimbo)"
+                    }
+                  ],
+                  "apresentacao": {
+                    "alinhamento": "center"
+                  }
+                }
+              ],
+              "titulo": "Responsável Técnico:"
+            },
+            {
+              "id": "assinatura-0182",
+              "tipo": "parte",
+              "categoria": "assinatura",
+              "conteudo": [
+                {
+                  "id": "texto-0183",
+                  "tipo": "texto",
+                  "trechos": [
+                    {
+                      "texto": "____________________________________________\n (Assinatura e carimbo)"
+                    }
+                  ],
+                  "apresentacao": {
+                    "alinhamento": "center"
+                  }
+                }
+              ],
+              "titulo": "Titular / Representante Institucional:"
+            }
+          ],
+          "titulo": "TERMO DE RESPONSABILIDADE - EXTRATOR LATTES"
+        },
+        {
+          "id": "formulario-habilitacao",
+          "tipo": "tabela",
+          "numeroColunas": 4,
+          "layout": "original",
+          "linhas": [
+            {
+              "id": "linha-0186",
+              "celulas": [
+                {
+                  "id": "celula-0185",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0184",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "FORMULÁRIO DE HABILITAÇÃO - EXTRATOR LATTES",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        },
+                        {
+                          "texto": "\n (Todos os campos são de preenchimento obrigatório)"
+                        }
+                      ],
+                      "apresentacao": {
+                        "alinhamento": "center"
+                      }
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 31.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0189",
+              "celulas": [
+                {
+                  "id": "celula-0188",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0187",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "1 - DADOS DA INSTITUIÇÃO REQUISITANTE",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 20.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0196",
+              "celulas": [
+                {
+                  "id": "celula-0191",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0190",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "NOME DA INSTITUIÇÃO:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 21.0
+                  }
+                },
+                {
+                  "id": "celula-0193",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0192",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "SIGLA"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 56.0,
+                    "alturaPx": 21.0
+                  }
+                },
+                {
+                  "id": "celula-0195",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0194",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "CÓDIGO INSTITUIÇÃO"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 152.0,
+                    "alturaPx": 21.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0203",
+              "celulas": [
+                {
+                  "id": "celula-0198",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0197",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 31.0
+                  }
+                },
+                {
+                  "id": "celula-0200",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0199",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 56.0,
+                    "alturaPx": 31.0
+                  }
+                },
+                {
+                  "id": "celula-0202",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0201",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 152.0,
+                    "alturaPx": 31.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0208",
+              "celulas": [
+                {
+                  "id": "celula-0205",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0204",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 27.0,
+                    "alturaPx": 22.0
+                  }
+                },
+                {
+                  "id": "celula-0207",
+                  "tipo": "td",
+                  "colspan": 3,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0206",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "2 - DADOS DO SISTEMA CLIENTE - AMBIENTE DE HOMOLOGAÇÃO",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 653.0,
+                    "alturaPx": 22.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0213",
+              "celulas": [
+                {
+                  "id": "celula-0210",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0209",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "NOME DO SISTEMA CLIENTE:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0212",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 2,
+                  "conteudo": [
+                    {
+                      "id": "texto-0211",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "SIGLA DO SISTEMA:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0216",
+              "celulas": [
+                {
+                  "id": "celula-0215",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0214",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0221",
+              "celulas": [
+                {
+                  "id": "celula-0218",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0217",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "URL DA MÁQUINA QUE IRÁ ACESSAR O WEBSERVICE:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0220",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 2,
+                  "conteudo": [
+                    {
+                      "id": "texto-0219",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "ENDEREÇO IP:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0224",
+              "celulas": [
+                {
+                  "id": "celula-0223",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0222",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0229",
+              "celulas": [
+                {
+                  "id": "celula-0226",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0225",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 27.0,
+                    "alturaPx": 21.0
+                  }
+                },
+                {
+                  "id": "celula-0228",
+                  "tipo": "td",
+                  "colspan": 3,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0227",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "3 - DADOS DO SISTEMA CLIENTE - AMBIENTE DE PRODUÇÃO",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 653.0,
+                    "alturaPx": 21.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0234",
+              "celulas": [
+                {
+                  "id": "celula-0231",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0230",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "NOME DO SISTEMA CLIENTE:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0233",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 2,
+                  "conteudo": [
+                    {
+                      "id": "texto-0232",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "SIGLA DO SISTEMA:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0237",
+              "celulas": [
+                {
+                  "id": "celula-0236",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0235",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0242",
+              "celulas": [
+                {
+                  "id": "celula-0239",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0238",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "URL DA MÁQUINA QUE IRÁ ACESSAR O WEBSERVICE:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0241",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 2,
+                  "conteudo": [
+                    {
+                      "id": "texto-0240",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "ENDEREÇO IP:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0245",
+              "celulas": [
+                {
+                  "id": "celula-0244",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0243",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0248",
+              "celulas": [
+                {
+                  "id": "celula-0247",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0246",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "4 - DADOS DO RESPONSÁVEL TÉCNICO",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 18.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0253",
+              "celulas": [
+                {
+                  "id": "celula-0250",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0249",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "NOME COMPLETO:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0252",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0251",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "CPF:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0256",
+              "celulas": [
+                {
+                  "id": "celula-0255",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0254",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 39.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0259",
+              "celulas": [
+                {
+                  "id": "celula-0258",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0257",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "CARGO/FUNÇÃO:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0262",
+              "celulas": [
+                {
+                  "id": "celula-0261",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0260",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0265",
+              "celulas": [
+                {
+                  "id": "celula-0264",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0263",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "INSTITUIÇÃO"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0270",
+              "celulas": [
+                {
+                  "id": "celula-0267",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0266",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "E-MAIL:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0269",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0268",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "DDD TEL:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0273",
+              "celulas": [
+                {
+                  "id": "celula-0272",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0271",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0278",
+              "celulas": [
+                {
+                  "id": "celula-0275",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0274",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "ASSINATURA:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 20.0
+                  }
+                },
+                {
+                  "id": "celula-0277",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0276",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "DATA:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 20.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0281",
+              "celulas": [
+                {
+                  "id": "celula-0280",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0279",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0284",
+              "celulas": [
+                {
+                  "id": "celula-0283",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0282",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "5 - DADOS DO REPRESENTANTE INSTITUCIONAL OU REPRESENTANTE LEGAL (conforme DI)",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 19.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0289",
+              "celulas": [
+                {
+                  "id": "celula-0286",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0285",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "NOME COMPLETO:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0288",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0287",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "CPF:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0294",
+              "celulas": [
+                {
+                  "id": "celula-0291",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0290",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0293",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0292",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0297",
+              "celulas": [
+                {
+                  "id": "celula-0296",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0295",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "CARGO/FUNÇÃO:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0302",
+              "celulas": [
+                {
+                  "id": "celula-0299",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0298",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "E-MAIL:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0301",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0300",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "DDD TEL:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0307",
+              "celulas": [
+                {
+                  "id": "celula-0304",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0303",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0306",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0305",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0312",
+              "celulas": [
+                {
+                  "id": "celula-0309",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0308",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "ASSINATURA:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0311",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0310",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "DATA:"
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0317",
+              "celulas": [
+                {
+                  "id": "celula-0314",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0313",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 471.0,
+                    "alturaPx": 25.0
+                  }
+                },
+                {
+                  "id": "celula-0316",
+                  "tipo": "td",
+                  "colspan": 2,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0315",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 209.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0320",
+              "celulas": [
+                {
+                  "id": "celula-0319",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0318",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": "6 - FINALIDADE (conforme Art. 7º da Lei 13.709/2018)",
+                          "marcas": [
+                            "negrito"
+                          ]
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 25.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0323",
+              "celulas": [
+                {
+                  "id": "celula-0322",
+                  "tipo": "td",
+                  "colspan": 4,
+                  "rowspan": 1,
+                  "conteudo": [
+                    {
+                      "id": "texto-0321",
+                      "tipo": "texto",
+                      "trechos": [
+                        {
+                          "texto": ""
+                        }
+                      ]
+                    }
+                  ],
+                  "apresentacao": {
+                    "larguraPx": 680.0,
+                    "alturaPx": 62.0
+                  }
+                }
+              ]
+            },
+            {
+              "id": "linha-0328",
+              "celulas": [
+                {
+                  "id": "celula-0324",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": []
+                },
+                {
+                  "id": "celula-0325",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": []
+                },
+                {
+                  "id": "celula-0326",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": []
+                },
+                {
+                  "id": "celula-0327",
+                  "tipo": "td",
+                  "colspan": 1,
+                  "rowspan": 1,
+                  "conteudo": []
+                }
+              ],
+              "apresentacao": {
+                "alturaPx": 0.0
+              }
+            }
+          ],
+          "apresentacao": {
+            "larguraPx": 680.0,
+            "bordaPx": 0,
+            "preenchimentoCelulasPx": 0,
+            "espacamentoCelulasPx": 0
+          }
+        }
+      ],
+      "rotulo": "Anexo I",
+      "numero": "I"
+    }
+  ]
+}

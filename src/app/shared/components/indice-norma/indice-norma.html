@@ -1,0 +1,37 @@
+<nav aria-label="Artigos do documento">
+  <h2 class="h5 mt-0">Neste documento</h2>
+  <ng-container *ngTemplateOutlet="ramo; context: { $implicit: itens() }" />
+</nav>
+
+<ng-template #ramo let-entradas>
+  <ul>
+    @for (entrada of entradas; track entrada.id) {
+      <li>
+        @if (entrada.tipo === 'grupo' && entrada.filhos.length) {
+          <details [open]="!recolhidos().has(entrada.id)" (toggle)="alternar(entrada.id, $event)">
+            <summary>
+              {{ entrada.rotulo }}
+              @if (entrada.titulo) {
+                — {{ entrada.titulo }}
+              }
+            </summary>
+            <ng-container *ngTemplateOutlet="ramo; context: { $implicit: entrada.filhos }" />
+          </details>
+        } @else {
+          <a
+            [href]="'#' + prefixo() + '-' + entrada.id"
+            [attr.title]="
+              entrada.tipo === 'artigo' ? entrada.rotulo + ' ' + entrada.textoCompleto : null
+            "
+            (click)="navegar(entrada.id, $event)"
+          >
+            <span class="rotulo">{{ entrada.rotulo || entrada.titulo }}</span>
+            @if (entrada.tipo === 'artigo' && entrada.previa) {
+              <span class="previa">{{ entrada.previa }}</span>
+            }
+          </a>
+        }
+      </li>
+    }
+  </ul>
+</ng-template>

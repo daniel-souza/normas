@@ -11,8 +11,15 @@
       </div>
     }
     <p>
-      Publicação: {{ documento.dataPublicacao | date: 'dd/MM/yyyy' : 'UTC' }} ·
-      <strong>{{ documento.situacao === 'revogada' ? 'Revogada' : 'Vigente' }}</strong>
+      @if (documento.dataAto) {
+        Data do ato: {{ documento.dataAto | date: 'dd/MM/yyyy' : 'UTC' }} ·
+      }
+      @if (documento.dataPublicacao) {
+        Publicação: {{ documento.dataPublicacao | date: 'dd/MM/yyyy' : 'UTC' }}
+      } @else {
+        Publicação não informada
+      }
+      · <strong>{{ situacoes[documento.situacao] }}</strong>
     </p>
     <app-norma-documento
       [texto]="documento.texto"
@@ -21,6 +28,7 @@
       [preambulo]="documento.preambulo"
       [assinaturas]="documento.assinaturas"
       [prefixo]="documento.id"
+      [estrutura]="documento.leitura"
     />
     @if (documento.fontes?.length || documento.publicacoes?.length || documento.extracao) {
       <details class="mt-5">

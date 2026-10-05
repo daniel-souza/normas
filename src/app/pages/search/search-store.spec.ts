@@ -8,6 +8,9 @@ import { SearchStore } from './search-store';
 describe('SearchStore', () => {
   let store: SearchStore;
   beforeEach(() => {
+    TestBed.configureTestingModule({
+      providers: [{ provide: Acervo, useValue: { normas: signal(NORMAS_EXEMPLO) } }],
+    });
     store = TestBed.inject(SearchStore);
   });
 
@@ -44,6 +47,25 @@ describe('SearchStore', () => {
     expect(dataCivil(new Date(2023, 0, 2, 23, 30))).toBe('2023-01-02');
     expect(dataCivil(comoData('2023-01-02'))).toBe('2023-01-02');
     expect(dataCivil(null)).toBe('');
+  });
+});
+
+describe('busca no acervo com a norma importada', () => {
+  it('encontra a norma por texto do anexo sem tratá-la como fictícia', () => {
+    const store = TestBed.inject(SearchStore);
+    store.atualizar({ termo: 'Extrator Lattes' });
+    store.buscar();
+    expect(store.resultados().map((norma) => norma.id)).toEqual(['cnpq-resolucao-1-2023']);
+  });
+
+  it('exclui publicação desconhecida somente quando o período de publicação é filtrado', () => {
+    const store = TestBed.inject(SearchStore);
+    expect(store.total()).toBe(2);
+    store.atualizar({ dataInicio: '2023-01-01', dataFim: '2023-12-31' });
+    store.buscar();
+    expect(store.resultados().map((norma) => norma.id)).toEqual(['demonstracao-organizacao']);
+    store.limpar();
+    expect(store.resultados().some((norma) => norma.id === 'cnpq-resolucao-1-2023')).toBe(true);
   });
 });
 

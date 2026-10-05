@@ -3,6 +3,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, input } from '@an
 import { RouterLink } from '@angular/router';
 import { Acervo } from '../../shared/normas/acervo';
 import { NormaDocumento } from '../../shared/components/norma-documento/norma-documento';
+import { SITUACOES_NORMA } from '../../shared/normas/norma';
 
 @Component({
   selector: 'app-norma',
@@ -12,6 +13,7 @@ import { NormaDocumento } from '../../shared/components/norma-documento/norma-do
 })
 export class Norma {
   readonly id = input.required<string>();
+  readonly situacoes = SITUACOES_NORMA;
   private readonly acervo = inject(Acervo);
   readonly norma = computed(() => this.acervo.normas().find((norma) => norma.id === this.id()));
 

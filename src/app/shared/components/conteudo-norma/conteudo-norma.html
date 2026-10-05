@@ -1,0 +1,100 @@
+<ng-container *ngTemplateOutlet="conteudo; context: { $implicit: blocos() }" />
+
+<ng-template #conteudo let-itens>
+  @for (bloco of itens; track bloco.id) {
+    @switch (bloco.tipo) {
+      @case ('agrupamento') {
+        <h3
+          class="agrupamento"
+          [id]="prefixo() + '-' + bloco.id"
+          tabindex="-1"
+          [attr.aria-level]="
+            bloco.categoria === 'secao' ? 4 : bloco.categoria === 'subsecao' ? 5 : 3
+          "
+        >
+          {{ bloco.texto }}
+          @if (bloco.titulo) {
+            <span class="titulo-agrupamento">{{ bloco.titulo }}</span>
+          }
+        </h3>
+      }
+      @case ('titulo') {
+        <p class="titulo-agrupamento">{{ bloco.texto }}</p>
+      }
+      @case ('tabela') {
+        @if (bloco.tabela; as tabela) {
+          <div
+            class="tabela-rolagem"
+            role="region"
+            [attr.aria-label]="'Tabela ' + bloco.id"
+            tabindex="0"
+            [id]="prefixo() + '-' + bloco.id"
+          >
+            <table
+              [attr.aria-label]="'Tabela ' + bloco.id"
+              [style.min-width.px]="tabela.apresentacao?.larguraPx"
+              [style.border-spacing.px]="tabela.apresentacao?.espacamentoCelulasPx"
+            >
+              <tbody>
+                @for (linha of tabela.linhas; track linha.id) {
+                  <tr [id]="prefixo() + '-' + linha.id">
+                    @for (celula of linha.celulas; track celula.id) {
+                      @if (celula.tipo === 'th') {
+                        <th
+                          [attr.colspan]="celula.colspan"
+                          [attr.rowspan]="celula.rowspan"
+                          [id]="prefixo() + '-' + celula.id"
+                          [style.text-align]="celula.apresentacao?.alinhamento"
+                        >
+                          <ng-container
+                            *ngTemplateOutlet="conteudo; context: { $implicit: celula.blocos }"
+                          />
+                        </th>
+                      } @else {
+                        <td
+                          [attr.colspan]="celula.colspan"
+                          [attr.rowspan]="celula.rowspan"
+                          [id]="prefixo() + '-' + celula.id"
+                          [style.width.px]="celula.apresentacao?.larguraPx"
+                          [style.height.px]="celula.apresentacao?.alturaPx"
+                          [style.text-align]="celula.apresentacao?.alinhamento"
+                          [style.padding.px]="tabela.apresentacao?.preenchimentoCelulasPx"
+                        >
+                          <ng-container
+                            *ngTemplateOutlet="conteudo; context: { $implicit: celula.blocos }"
+                          />
+                        </td>
+                      }
+                    }
+                  </tr>
+                }
+              </tbody>
+            </table>
+          </div>
+        }
+      }
+      @default {
+        <p
+          class="dispositivo"
+          [class.artigo]="bloco.tipo === 'artigo'"
+          [class.assinatura]="bloco.tipo === 'assinatura'"
+          [id]="prefixo() + '-' + bloco.id"
+          [attr.data-tipo]="bloco.tipo"
+          [attr.data-pai]="bloco.paiId ? prefixo() + '-' + bloco.paiId : null"
+          [style.--nivel]="bloco.profundidade"
+          [style.text-align]="bloco.apresentacao?.alinhamento"
+          tabindex="-1"
+        >
+          @if (bloco.trechos) {
+            @if (bloco.rotulo) {
+              <span>{{ bloco.rotulo }} </span>
+            }
+            <app-trechos-norma [trechos]="bloco.trechos" />
+          } @else {
+            {{ bloco.original || bloco.titulo }}
+          }
+        </p>
+      }
+    }
+  }
+</ng-template>

@@ -26,17 +26,19 @@ Epígrafe e agrupamentos centralizados, ementa deslocada e recuos de dispositivo
 
 `src/styles.css` e a configuração PostCSS permanecem como vieram no anexo: core GOV.BR, Font Awesome e utilitários Tailwind com prefixo `tw`, sem Preflight. Não há sobrescritas dos seletores `.br-*`, manipulação do Shadow DOM ou `::ng-deep`.
 
-Os estilos novos ficam em `pages/search/search.css` (duas colunas responsivas) e `shared/components/norma-documento/norma-documento.css` (leitura, índice e recuos). Usam os tokens do GOV.BR. Uma regra só deve migrar para `styles.css` quando representar uma necessidade real compartilhada por vários componentes.
+Os estilos específicos ficam em `pages/search/search.css` e nos componentes `norma-documento`, `conteudo-norma`, `indice-norma` e `trechos-norma`. Eles tratam apenas layout, recuos, índice, tabelas e marcas do texto, usando os tokens do GOV.BR. Uma regra só deve migrar para `styles.css` quando representar uma necessidade real compartilhada por vários componentes.
 
 ## Contrato do parser
 
 O trecho fornecido de `norma.schema.json` confirma os campos de fonte, publicação e extração. As interfaces `FonteNorma`, `PublicacaoNorma` e `ExtracaoNorma`, em `shared/normas/norma.ts`, mantêm os nomes, campos obrigatórios/opcionais e enumerações desse trecho.
 
-`NormaLeitura` é um modelo de apresentação local. Ele **não é uma implementação do schema completo**. Não foi possível inferir do fragmento a raiz do documento, os dispositivos, o conteúdo rico, as tabelas ou os relacionamentos. Nenhum importador JSON com validação de schema é anunciado nesta entrega. Tipos TypeScript não substituem validação de `additionalProperties`, formatos, padrões ou referências como `fonteId` em tempo de execução.
+`NormaLeitura` é um modelo de apresentação local. Ele **não é uma implementação do schema completo**. O anexo `norma-cnpq-1-2023.json` agora fornece um exemplo integral de raiz, dispositivos, conteúdo rico e tabelas. O adaptador é precedido por uma validação estrutural do formato observado, incluindo IDs únicos, tipos de conteúdo, células e referências `fonteId`. Isso não equivale a verificar todas as regras de `norma.schema.json`, como restrições de propriedades e formatos ainda não disponíveis.
+
+O JSON foi mantido integralmente. Sua árvore organiza o índice e o corpo do documento; nenhum artigo é reconstruído por expressões regulares nesse caminho. São preservados 20 artigos, três capítulos, quatro seções, o anexo com duas tabelas, células vazias e mescladas, links e marcas de negrito/itálico. Os atributos de dimensões e alinhamento são dicas de apresentação; as tabelas permitem rolagem horizontal em telas estreitas. O HTML e as folhas de estilo originais da fonte não vieram neste anexo, portanto não se afirma reprodução fac-similar.
 
 `interpretarNorma` recebe texto simples e produz blocos com identificação, número da linha, tipo, marcador original, texto, profundidade e dispositivo superior. A entrada integral é retida, incluindo linhas em branco. A apresentação elimina linhas vazias e representa cada linha com conteúdo por um bloco; não preserva a paginação do original. Os identificadores são locais à leitura, não identificadores jurídicos permanentes.
 
-Limites atuais:
+Limites do parser de texto simples:
 
 - Uma linha de texto deve corresponder ao início de um dispositivo ou à sua continuação. OCR e quebras artificiais de PDF precisam de um adaptador específico.
 - Texto não reconhecido permanece visível. Dispositivos sem superior reconhecido geram observações.
@@ -44,4 +46,4 @@ Limites atuais:
 - Não há consolidação, validação de sequência, análise jurídica, persistência ou envio do texto do leitor a um servidor.
 - O leitor aceita até 200.000 caracteres por vez. HTML recebido é exibido como texto por interpolação Angular, sem `innerHTML` nem bypass de sanitização.
 
-Para integrar os artefatos anteriores, fornecer o schema completo e `norma-cnpq-1-2023.json`, validar o JSON e criar um adaptador explícito para `NormaLeitura`. Preservar `htmlOriginalObtido`, `layoutTabelas`, `sha256Html` e observações; não inventar hash nem marcar como original uma reconstrução. Publicações devem apontar para uma fonte existente, e links devem usar HTTP(S).
+O schema completo ainda é necessário para conferir compatibilidade integral. Os metadados `htmlOriginalObtido`, `layoutTabelas`, `sha256Html` e observações são os informados no JSON, sem nova verificação do HTML nesta etapa. Não se inventa hash nem se marca uma reconstrução como original. Fontes usam HTTP(S); links no conteúdo também podem usar `mailto:`. Protocolos executáveis não geram links.

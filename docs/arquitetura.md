@@ -19,12 +19,18 @@ src/app/
       norma.ts
       bloco-normativo.ts
       parser-norma.ts
+      conteudo-norma.ts, adaptar-norma.ts, validar-norma.ts
+      indice-norma.ts
+      dados/norma-cnpq-1-2023.json
       acervo.ts
       normas-exemplo.ts
     components/
       header/
       footer/
       norma-documento/
+      conteudo-norma/
+      indice-norma/
+      trechos-norma/
 ```
 
 A organização é por funcionalidade: contratos da busca, estado, formulário, resultados e testes permanecem em `pages/search`. O arquivo genérico `shared/models/busca.ts` foi substituído por `pages/search/filtro-busca.ts`. Código em `shared/normas` é usado tanto pela busca quanto pela leitura. Não são necessárias camadas adicionais para o acervo local.
@@ -48,6 +54,16 @@ A limpeza reinicia o store e recria os controles com uma chave Angular (`versaoF
 
 `NormaDocumento` usa `input()` e `computed()`: alterar o texto atualiza a apresentação e o índice. Componentes da funcionalidade usam `OnPush`. O texto permanece separado do código HTML e do CSS.
 
+## Documento estruturado e índice
+
+O arquivo `dados/norma-cnpq-1-2023.json` é uma cópia integral do anexo. `validarNorma` confere a estrutura suportada, IDs únicos, tipos de conteúdo, células e referências de publicação. Não representa a validação integral do JSON Schema ainda não fornecido. `adaptarNorma` converte a árvore em blocos de apresentação, preservando os IDs, a ordem, os trechos formatados e as tabelas com `colspan` e `rowspan`. O parser de texto simples continua disponível para os exemplos e a rota `/leitor`.
+
+`criarIndice` usa a hierarquia explícita do JSON ou os níveis dos agrupamentos no texto simples. Capítulos, seções e subseções usam `details`/`summary`, com estado reativo em `linkedSignal`. Os grupos começam abertos e podem ser recolhidos independentemente, inclusive por teclado. Ao receber outro documento, o índice reinicia esse estado. Artigos fora de agrupamentos continuam navegáveis.
+
+A prévia de cada artigo usa o início do caput: no máximo 90 caracteres Unicode, incluindo `...` quando há corte. O texto integral permanece no documento e no atributo `title` do link. IDs exclusivos distinguem os dois capítulos rotulados `CAPÍTULO I` na fonte, sem corrigir a numeração recebida. A navegação leva foco e rolagem ao dispositivo correto.
+
+O acervo mistura a resolução importada e os dois exemplos fictícios originais. A situação `nao_verificada` e a ausência de publicação são explícitas. A data do ato não substitui a data de publicação; documentos sem publicação informada ficam por último na ordenação por publicação e são excluídos apenas quando esse período é filtrado.
+
 ## Próximas integrações
 
-O acervo atual contém dois documentos fictícios. Para dados reais, adicionar um adaptador validado a partir do schema completo. Uma futura API pode consumir `RequisicaoBusca` e atualizar os signals de resultados, carregamento e erro sem redistribuir o estado pelos componentes. Autenticação e backend não estão implementados.
+O schema completo permitirá ampliar a validação além do formato observado no anexo. Uma futura API pode consumir `RequisicaoBusca` e atualizar os signals de resultados, carregamento e erro sem redistribuir o estado pelos componentes. Autenticação e backend não estão implementados.

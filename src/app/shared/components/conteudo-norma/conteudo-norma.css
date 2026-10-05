@@ -1,0 +1,60 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.agrupamento,
+.titulo-agrupamento,
+.assinatura {
+  text-align: center;
+}
+.agrupamento {
+  font-size: inherit;
+  margin-top: var(--spacing-scale-4x);
+  margin-bottom: var(--spacing-scale-base);
+}
+.titulo-agrupamento {
+  display: block;
+  font-weight: var(--font-weight-semi-bold);
+}
+.dispositivo {
+  white-space: pre-wrap;
+  margin-inline-start: calc(var(--nivel, 0) * var(--spacing-scale-2x));
+  scroll-margin-block-start: var(--spacing-scale-3x);
+}
+.artigo {
+  margin-top: var(--spacing-scale-3x);
+}
+.assinatura {
+  margin-top: var(--spacing-scale-4x);
+}
+.tabela-rolagem {
+  max-width: 100%;
+  overflow-x: auto;
+  margin-block: var(--spacing-scale-3x);
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+td,
+th {
+  vertical-align: top;
+  overflow-wrap: anywhere;
+}
+@media (max-width: 767px) {
+  .dispositivo {
+    margin-inline-start: calc(var(--nivel, 0) * var(--spacing-scale-base));
+  }
+}
+@media print {
+  .dispositivo {
+    orphans: 3;
+    widows: 3;
+  }
+  .tabela-rolagem {
+    overflow: visible;
+  }
+  table {
+    min-width: 0 !important;
+  }
+}

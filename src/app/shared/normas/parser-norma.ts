@@ -66,8 +66,7 @@ export function interpretarNorma(original: string): LeituraNormativa {
           texto = correspondencia[2];
           break;
         }
-        if (tipo === 'texto' && esperaTitulo && linha === linha.toLocaleUpperCase('pt-BR'))
-          tipo = 'titulo';
+        if (tipo === 'texto' && esperaTitulo) tipo = 'titulo';
         esperaTitulo = false;
 
         if (tipo === 'paragrafo') pai = artigo;
