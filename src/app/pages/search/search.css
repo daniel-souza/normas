@@ -1,0 +1,12 @@
+.search-layout {
+  display: grid;
+  grid-template-columns: minmax(16rem, 22rem) minmax(0, 1fr);
+  gap: var(--spacing-scale-4x);
+  align-items: start;
+}
+
+@media (max-width: 767px) {
+  .search-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}

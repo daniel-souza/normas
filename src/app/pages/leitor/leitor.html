@@ -1,0 +1,28 @@
+<div class="container-lg py-5">
+  <p><a routerLink="/">Voltar à consulta</a></p>
+  <h1>Leitor de texto normativo</h1>
+  <p>
+    Cole os dispositivos de uma norma, mantendo as quebras de linha. O texto é processado somente
+    nesta página.
+  </p>
+  <p id="leitor-ajuda">
+    A leitura identifica dispositivos sem alterar o texto ou sua numeração. Citações e anexos
+    precisam de revisão. O exemplo inicial é fictício.
+  </p>
+  <div class="br-textarea mb-4">
+    <label for="texto-normativo">Texto dos dispositivos</label>
+    <textarea
+      id="texto-normativo"
+      rows="10"
+      aria-describedby="leitor-ajuda"
+      [attr.maxlength]="limite"
+      [value]="texto()"
+      (input)="atualizar($event)"
+    ></textarea>
+  </div>
+  @if (erro()) {
+    <p role="alert" class="feedback danger">{{ erro() }}</p>
+  }
+  <h2>Leitura estruturada</h2>
+  <app-norma-documento [texto]="texto()" prefixo="leitor" />
+</div>

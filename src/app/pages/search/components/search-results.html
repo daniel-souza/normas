@@ -1,0 +1,52 @@
+<section aria-labelledby="resultados-titulo">
+  <h2 id="resultados-titulo" class="h4 mt-0">Resultados</h2>
+  <p role="status">
+    {{ store.total() }} {{ store.total() === 1 ? 'norma encontrada' : 'normas encontradas' }}
+  </p>
+  @for (norma of store.resultados(); track norma.id) {
+    <article class="br-card mb-3">
+      <div class="card-content">
+        <p class="text-up-01">
+          {{ norma.categoria }} · {{ norma.dataPublicacao | date: 'dd/MM/yyyy' : 'UTC' }}
+        </p>
+        <h3 class="h5">
+          <a [routerLink]="['/normas', norma.id]">{{ norma.epigrafe }}</a>
+        </h3>
+        <p>{{ norma.ementa }}</p>
+        <p class="mb-0">
+          <strong>{{ norma.situacao === 'revogada' ? 'Revogada' : 'Vigente' }}</strong> · Exemplo
+          fictício
+        </p>
+      </div>
+    </article>
+  } @empty {
+    <div class="br-message info">
+      <div class="content">
+        <span class="message-body"
+          >Nenhuma norma corresponde aos filtros. Experimente outro termo ou limpe os filtros.</span
+        >
+      </div>
+    </div>
+  }
+  @if (store.totalPaginas() > 1) {
+    <nav aria-label="Paginação dos resultados" class="d-flex align-items-center">
+      <button
+        class="br-button secondary"
+        type="button"
+        [disabled]="store.pagina() === 1"
+        (click)="store.irParaPagina(store.pagina() - 1)"
+      >
+        Anterior
+      </button>
+      <span class="mx-3">Página {{ store.pagina() }} de {{ store.totalPaginas() }}</span>
+      <button
+        class="br-button secondary"
+        type="button"
+        [disabled]="store.pagina() === store.totalPaginas()"
+        (click)="store.irParaPagina(store.pagina() + 1)"
+      >
+        Próxima
+      </button>
+    </nav>
+  }
+</section>

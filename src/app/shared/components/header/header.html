@@ -1,0 +1,38 @@
+
+<br-header  density="small" class="">
+  <!-- Logo oficial do Governo Federal -->
+  <br-header-logo slot="logo" src="logo-govbr.png" />
+  <div slot="signature" class="tw:w-full tw:max-w-64 tw:font-bold tw:sm:hidden">
+     CNPq
+  </div>
+  <div slot="signature" class="tw:w-full tw:max-w-72 tw:font-bold tw:sm:block tw:hidden">
+     Conselho Nacional de Desenvolvimento Científico e Tecnológico - CNPq
+  </div>
+  <br-header-list
+    slot="functions"
+    list-title="Funcionalidades"
+  >
+    <br-header-function href="javascript:void(0)">
+      <i
+        slot="icon"
+        class="fas fa-chart-bar"
+        aria-hidden="true"
+      ></i>
+      Painel de Normas
+    </br-header-function>
+  </br-header-list>
+  <br-sign-in
+    slot="access"
+    density="small"
+    href="javascript:void(0)"
+  >
+    <i
+      slot="icon"
+      class="fas fa-user"
+      aria-hidden="true"
+    ></i>
+    Entrar
+  </br-sign-in>
+  <span slot="menu-trigger" hidden></span>
+  <span slot="caption" class="tw:font-bold">Sistema de Normas</span>
+</br-header>

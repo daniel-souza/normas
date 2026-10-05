@@ -1,0 +1,78 @@
+<div class="container-lg py-5">
+  <p><a routerLink="/">Voltar à consulta</a></p>
+  @if (norma(); as documento) {
+    <h1>Leitura da norma</h1>
+    @if (documento.demonstracao) {
+      <div class="br-message info mb-4" role="note">
+        <div class="content">
+          <span class="message-title">Documento de demonstração.</span>
+          <span class="message-body"> Texto fictício, sem valor normativo.</span>
+        </div>
+      </div>
+    }
+    <p>
+      Publicação: {{ documento.dataPublicacao | date: 'dd/MM/yyyy' : 'UTC' }} ·
+      <strong>{{ documento.situacao === 'revogada' ? 'Revogada' : 'Vigente' }}</strong>
+    </p>
+    <app-norma-documento
+      [texto]="documento.texto"
+      [epigrafe]="documento.epigrafe"
+      [ementa]="documento.ementa"
+      [preambulo]="documento.preambulo"
+      [assinaturas]="documento.assinaturas"
+      [prefixo]="documento.id"
+    />
+    @if (documento.fontes?.length || documento.publicacoes?.length || documento.extracao) {
+      <details class="mt-5">
+        <summary>Origem e informações da extração</summary>
+        @for (fonte of documento.fontes ?? []; track fonte.id) {
+          <p>
+            @if (fonteSegura(fonte.url); as url) {
+              <a [href]="url" target="_blank" rel="noopener noreferrer">{{ fonte.descricao }}</a>
+            } @else {
+              {{ fonte.descricao }} (endereço inválido)
+            }
+          </p>
+        }
+        @for (publicacao of documento.publicacoes ?? []; track $index) {
+          <p>
+            {{ publicacao.veiculo }} · {{ publicacao.data | date: 'dd/MM/yyyy' : 'UTC' }}
+            @if (publicacao.edicao) {
+              · Edição {{ publicacao.edicao }}
+            }
+            @if (publicacao.secao) {
+              · Seção {{ publicacao.secao }}
+            }
+            @if (publicacao.pagina) {
+              · Página {{ publicacao.pagina }}
+            }
+            · Fonte: {{ publicacao.fonteId }}
+          </p>
+        }
+        @if (documento.extracao; as extracao) {
+          <p>
+            Extração: {{ extracao.data | date: 'dd/MM/yyyy' : 'UTC' }} · Método:
+            {{ extracao.metodo }}
+          </p>
+          <p>
+            HTML original obtido: {{ extracao.htmlOriginalObtido ? 'Sim' : 'Não' }} · Tabelas:
+            {{ extracao.layoutTabelas }}
+          </p>
+          @if (extracao.sha256Html) {
+            <p>
+              SHA-256: <code>{{ extracao.sha256Html }}</code>
+            </p>
+          }
+          <ul>
+            @for (observacao of extracao.observacoes; track $index) {
+              <li>{{ observacao }}</li>
+            }
+          </ul>
+        }
+      </details>
+    }
+  } @else {
+    <h1>Norma não encontrada</h1>
+    <p>O documento solicitado não está disponível neste acervo.</p>
+  }
+</div>

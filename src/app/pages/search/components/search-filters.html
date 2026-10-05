@@ -1,0 +1,81 @@
+@for (versao of [versaoFormulario()]; track versao) {
+  <form (submit)="buscar($event)" (reset)="limpar($event)" aria-labelledby="filtros-titulo">
+    <h2 id="filtros-titulo" class="h4 mt-0">Filtros de busca</h2>
+    <div class="mb-3">
+      <br-input
+        name="termo"
+        label="Texto de pesquisa"
+        placeholder="Título, assunto ou palavra-chave"
+        density="small"
+        [value]="store.filtros().termo"
+        (valueChange)="atualizarTermo($event)"
+      />
+    </div>
+    <fieldset class="mb-3">
+      <legend class="h6">Período de publicação</legend>
+      <div class="mb-2" role="group" aria-labelledby="inicio-label">
+        <span id="inicio-label">Data de início</span>
+        <br-datetime-picker
+          id="data-inicio"
+          name="dataInicio"
+          aria-labelledby="inicio-label"
+          mode="date"
+          locale="pt-BR"
+          selection-mode="single"
+          placeholder="dd/mm/aaaa"
+          [initialMoment]="null"
+          [value]="dataInicio()"
+          (valueChange)="selecionarData('dataInicio', $event)"
+        />
+      </div>
+      <div role="group" aria-labelledby="fim-label">
+        <span id="fim-label">Data de fim</span>
+        <br-datetime-picker
+          id="data-fim"
+          name="dataFim"
+          aria-labelledby="fim-label"
+          mode="date"
+          locale="pt-BR"
+          selection-mode="single"
+          placeholder="dd/mm/aaaa"
+          [initialMoment]="null"
+          [value]="dataFim()"
+          (valueChange)="selecionarData('dataFim', $event)"
+        />
+      </div>
+    </fieldset>
+    <div class="mb-3">
+      <br-select
+        name="categorias"
+        label="Categorias"
+        placeholder="Todas as categorias"
+        density="small"
+        [multiple]="true"
+        [value]="store.filtros().categorias"
+        (valueChange)="selecionarCategorias($event)"
+      >
+        @for (categoria of categorias; track categoria.value) {
+          <br-select-option [value]="categoria.value" [label]="categoria.label" />
+        }
+      </br-select>
+    </div>
+    <div class="mb-3">
+      <br-checkbox
+        name="incluirRevogadas"
+        density="small"
+        [checked]="store.filtros().incluirRevogadas"
+        (checkedChange)="incluirRevogadas($event)"
+        >Incluir revogadas</br-checkbox
+      >
+    </div>
+    @if (store.erro()) {
+      <p class="feedback danger" role="alert">{{ store.erro() }}</p>
+    }
+    <div class="d-flex flex-wrap">
+      <button class="br-button primary mr-2 mb-2" type="submit" [disabled]="!!store.erro()">
+        Buscar normas
+      </button>
+      <button #botaoLimpar class="br-button secondary mb-2" type="reset">Limpar filtros</button>
+    </div>
+  </form>
+}
