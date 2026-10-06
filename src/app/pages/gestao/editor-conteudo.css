@@ -1,0 +1,41 @@
+:host {
+  display: block;
+  min-width: 0;
+}
+.no {
+  border-inline-start: 2px solid var(--blue-warm-vivid-70);
+  padding-inline-start: var(--spacing-scale-base);
+  margin-block: var(--spacing-scale-2x);
+}
+summary {
+  cursor: pointer;
+  font-weight: var(--font-weight-semi-bold);
+  overflow-wrap: anywhere;
+}
+.campos {
+  padding-block: var(--spacing-scale-2x);
+}
+.br-input,
+.br-textarea,
+.adicionar {
+  margin-block: var(--spacing-scale-base);
+}
+.acoes,
+.adicionar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--spacing-scale-base);
+}
+select {
+  max-width: 100%;
+  min-height: 40px;
+}
+.dica {
+  overflow-wrap: anywhere;
+}
+@media (max-width: 767px) {
+  .no {
+    padding-inline-start: 4px;
+  }
+}

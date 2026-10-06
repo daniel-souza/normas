@@ -47,3 +47,7 @@ Limites do parser de texto simples:
 - O leitor aceita até 200.000 caracteres por vez. HTML recebido é exibido como texto por interpolação Angular, sem `innerHTML` nem bypass de sanitização.
 
 O schema completo ainda é necessário para conferir compatibilidade integral. Os metadados `htmlOriginalObtido`, `layoutTabelas`, `sha256Html` e observações são os informados no JSON, sem nova verificação do HTML nesta etapa. Não se inventa hash nem se marca uma reconstrução como original. Fontes usam HTTP(S); links no conteúdo também podem usar `mailto:`. Protocolos executáveis não geram links.
+
+## Guia detalhado de implementação
+
+As regras exatas, expressões regulares, exemplos de pais/níveis, contrato de metadados e mapeamento de renderização estão em [Parser e renderização](parser-e-renderizacao.md). O guia descreve o código local, sem depender de conferência jurídica externa.

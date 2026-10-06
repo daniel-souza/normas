@@ -25,7 +25,7 @@ export function blocosDoConteudo(
   profundidade = 0,
 ): BlocoNormativo[] {
   return conteudo.flatMap((no) => {
-    const base = { id: no.id, linha: 0, profundidade, paiId };
+    const base = { id: no.id, linha: 0, profundidade, paiId: paiId ?? null };
     if (no.tipo === 'texto') {
       const texto = no.trechos.map((trecho) => trecho.texto).join('');
       return [
@@ -103,6 +103,7 @@ export function adaptarNorma(documento: NormaEstruturada): NormaLeitura {
   const texto = textoConteudo(documento.conteudo);
   return {
     id: documento.id,
+    identificacao: documento.identificacao,
     categoria: documento.identificacao.especie,
     epigrafe: documento.identificacao.epigrafe,
     ementa: documento.identificacao.ementa,

@@ -2,6 +2,12 @@
   <p><a routerLink="/">Voltar à consulta</a></p>
   @if (norma(); as documento) {
     <h1>Leitura da norma</h1>
+    <p><a [routerLink]="['/gestao', documento.id, 'editar']">Editar no mock</a></p>
+    @if (documento.alteracaoMock) {
+      <p class="br-message warning p-3" role="note">
+        Alteração de demonstração nesta sessão. Recarregar a página restaura o acervo original.
+      </p>
+    }
     @if (documento.demonstracao) {
       <div class="br-message info mb-4" role="note">
         <div class="content">
@@ -12,10 +18,10 @@
     }
     <p>
       @if (documento.dataAto) {
-        Data do ato: {{ documento.dataAto | date: 'dd/MM/yyyy' : 'UTC' }} ·
+        Data do ato: {{ documento.dataAto | date: 'dd/MM/yyyy' }} ·
       }
       @if (documento.dataPublicacao) {
-        Publicação: {{ documento.dataPublicacao | date: 'dd/MM/yyyy' : 'UTC' }}
+        Publicação: {{ documento.dataPublicacao | date: 'dd/MM/yyyy' }}
       } @else {
         Publicação não informada
       }
@@ -44,7 +50,7 @@
         }
         @for (publicacao of documento.publicacoes ?? []; track $index) {
           <p>
-            {{ publicacao.veiculo }} · {{ publicacao.data | date: 'dd/MM/yyyy' : 'UTC' }}
+            {{ publicacao.veiculo }} · {{ publicacao.data | date: 'dd/MM/yyyy' }}
             @if (publicacao.edicao) {
               · Edição {{ publicacao.edicao }}
             }
@@ -59,7 +65,7 @@
         }
         @if (documento.extracao; as extracao) {
           <p>
-            Extração: {{ extracao.data | date: 'dd/MM/yyyy' : 'UTC' }} · Método:
+            Extração: {{ extracao.data | date: 'dd/MM/yyyy' }} · Método:
             {{ extracao.metodo }}
           </p>
           <p>

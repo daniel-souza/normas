@@ -1,0 +1,56 @@
+<div class="container-lg py-5">
+  <p><a routerLink="/">Voltar à consulta</a></p>
+  <h1>Gestão de normas</h1>
+  <p class="br-message info p-3">
+    Mock em memória: cadastros, alterações e exclusões duram até recarregar a página.
+  </p>
+  <p>
+    Comece pela identificação, ementa, situação e publicação. Depois organize os capítulos, seções,
+    artigos e demais elementos.
+  </p>
+  <p><a class="br-button primary" routerLink="/gestao/nova">Nova norma</a></p>
+  @if (mensagem()) {
+    <p role="status">{{ mensagem() }}</p>
+  }
+  @if (pendente(); as norma) {
+    <section class="confirmacao" aria-labelledby="confirmar-exclusao">
+      <h2 id="confirmar-exclusao">Confirmar exclusão</h2>
+      <p>
+        Excluir <strong>{{ norma.epigrafe }}</strong> do acervo desta sessão? A norma e seu conteúdo
+        deixarão de aparecer na consulta.
+      </p>
+      <div class="acoes">
+        <button type="button" class="br-button primary" (click)="excluir()">
+          Confirmar exclusão
+        </button>
+        <button type="button" class="br-button secondary" (click)="pendente.set(null)">
+          Cancelar exclusão
+        </button>
+      </div>
+    </section>
+  }
+  <ul class="lista-normas">
+    @for (norma of acervo.normas(); track norma.id) {
+      <li>
+        <h2>
+          <a [routerLink]="['/normas', norma.id]">{{ norma.epigrafe }}</a>
+        </h2>
+        <p>{{ norma.ementa }}</p>
+        <p>{{ situacoes[norma.situacao] }}</p>
+        <div class="acoes">
+          <a class="br-button secondary" [routerLink]="['/gestao', norma.id, 'editar']">Editar</a>
+          <button
+            type="button"
+            class="br-button secondary"
+            (click)="pendente.set(norma); mensagem.set('')"
+            [disabled]="!!pendente()"
+          >
+            Excluir
+          </button>
+        </div>
+      </li>
+    } @empty {
+      <li>Nenhuma norma no acervo desta sessão.</li>
+    }
+  </ul>
+</div>

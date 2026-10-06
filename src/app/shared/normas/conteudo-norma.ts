@@ -1,4 +1,10 @@
-import { CategoriaNorma, ExtracaoNorma, FonteNorma, PublicacaoNorma, SituacaoNorma } from './norma';
+import {
+  ExtracaoNorma,
+  FonteNorma,
+  IdentificacaoNorma,
+  PublicacaoNorma,
+  SituacaoNorma,
+} from './norma';
 
 export type CategoriaParte =
   | 'parte'
@@ -74,17 +80,7 @@ export interface NormaEstruturada {
   readonly versaoSchema: string;
   readonly id: string;
   readonly tipo: 'norma';
-  readonly identificacao: {
-    readonly orgao: string;
-    readonly especie: CategoriaNorma;
-    readonly numero: string;
-    readonly ano: number;
-    readonly dataAto: string;
-    readonly epigrafe: string;
-    readonly titulo: string;
-    readonly ementa: string;
-    readonly processo?: string;
-  };
+  readonly identificacao: IdentificacaoNorma;
   readonly situacao: SituacaoNorma;
   readonly publicacoes: readonly PublicacaoNorma[];
   readonly fontes: readonly FonteNorma[];

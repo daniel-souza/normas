@@ -9,7 +9,7 @@
         <p class="text-up-01">
           {{ norma.categoria }} ·
           @if (norma.dataPublicacao) {
-            Publicação: {{ norma.dataPublicacao | date: 'dd/MM/yyyy' : 'UTC' }}
+            Publicação: {{ norma.dataPublicacao | date: 'dd/MM/yyyy' }}
           } @else {
             Publicação não informada
           }

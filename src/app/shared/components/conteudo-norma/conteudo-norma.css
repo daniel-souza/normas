@@ -9,6 +9,7 @@
 }
 .agrupamento {
   font-size: inherit;
+  font-weight: var(--font-weight-bold);
   margin-top: var(--spacing-scale-4x);
   margin-bottom: var(--spacing-scale-base);
 }

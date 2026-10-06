@@ -17,7 +17,8 @@ export class SearchStore {
   private readonly aplicados = signal<FiltroBusca>(filtrosVazios());
   private readonly paginaAtual = signal(1);
   readonly filtros = this.rascunho.asReadonly();
-  readonly pagina = this.paginaAtual.asReadonly();
+  // A exclusão no mock pode reduzir a quantidade de páginas da consulta atual.
+  readonly pagina = computed(() => Math.min(this.paginaAtual(), this.totalPaginas()));
   readonly itensPorPagina = 10;
   readonly erro = computed(() => {
     const { dataInicio, dataFim } = this.rascunho();

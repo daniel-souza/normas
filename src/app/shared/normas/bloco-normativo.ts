@@ -37,7 +37,8 @@ export interface BlocoNormativo {
   readonly original: string;
   readonly linha: number;
   readonly profundidade: number;
-  readonly paiId?: string;
+  /** null = raiz explícita do JSON; undefined = vínculo não informado pelo parser. */
+  readonly paiId?: string | null;
   readonly categoria?: CategoriaParte;
   readonly titulo?: string;
   readonly trechos?: readonly TrechoNorma[];

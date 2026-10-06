@@ -11,7 +11,7 @@ npm exec --yes --package=npm@11.19.1 -- npm ci
 npm start
 ```
 
-A porta de desenvolvimento é 4200. As rotas são `/` (consulta), `/normas/:id` (documento) e `/leitor` (texto simples). O desenvolvimento local não exige chaves, autenticação ou serviços externos.
+A porta de desenvolvimento é 4200. As rotas são `/` (consulta), `/normas/:id` (documento), `/leitor` (texto simples), `/gestao` (mock de gestão), `/gestao/nova` (cadastro) e `/gestao/:id/editar` (edição). O desenvolvimento local não exige chaves, autenticação ou serviços externos.
 
 ## Verificar
 
@@ -29,8 +29,12 @@ O build inicial inclui cerca de 1,84 MB sem compressão (aproximadamente 218 kB 
 
 ## Organização e referências
 
-Validação desta entrega: instalação com npm 11.19.1, build de produção, 31 testes unitários e 16 testes de navegador (desktop e celular) concluídos com sucesso. O servidor também foi reiniciado após a reinstalação das dependências.
+Validação inicial do projeto (anterior ao mock de gestão): instalação com npm 11.19.1, build de produção, 31 testes unitários e 16 testes de navegador (desktop e celular) concluídos com sucesso. O servidor também foi reiniciado após a reinstalação das dependências.
 
+Validação do mock: build de produção, 34 testes unitários e 22 cenários de navegador em desktop/celular, com reexecução dos quatro casos afetados pela correção das datas civis.
+
+- [Parser e renderização: regras, níveis e metadados, com exemplos](docs/parser-e-renderizacao.md).
+- [Mock de cadastro, edição e exclusão](docs/gestao-mock.md).
 - [Arquitetura, convenções de nomes e signals](docs/arquitetura.md).
 - [Redação normativa, fontes oficiais e limites do parser](docs/redacao-normativa.md).
 - Busca: `src/app/pages/search/`.
@@ -39,7 +43,7 @@ Validação desta entrega: instalação com npm 11.19.1, build de produção, 31
 
 A resolução importada está em `/normas/cnpq-resolucao-1-2023`; os exemplos anteriores continuam nos mesmos endereços. O índice lateral tem capítulos, seções e subseções recolhíveis e prévias dos artigos limitadas a 90 caracteres, com `...` quando necessário. As duas tabelas do anexo preservam células vazias e mescladas. A situação permanece “não verificada” e a publicação, não informada, como no JSON.
 
-Não há backend, autenticação, importação direta de PDF/HTML ou validação do schema JSON completo. O JSON incluído no projeto recebe validação estrutural antes da adaptação. O texto colado no leitor é processado em memória no navegador.
+Não há backend, autenticação, importação direta de PDF/HTML ou validação do schema JSON completo. O JSON incluído no projeto recebe validação estrutural antes da adaptação. O texto colado no leitor é processado em memória no navegador. O mock de gestão exige as informações principais antes do conteúdo, permite editar a árvore por formulários e reutiliza a busca e a leitura existentes. Todas as mutações são temporárias: recarregar a página restaura o acervo inicial.
 
 ## Situação das fontes oficiais
 
