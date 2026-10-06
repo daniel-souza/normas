@@ -10,8 +10,7 @@
     </p>
     <ol class="etapas" aria-label="Etapas do cadastro">
       <li [attr.aria-current]="etapa() === 1 ? 'step' : null">1. Informações principais</li>
-      <li [attr.aria-current]="etapa() === 2 ? 'step' : null">2. Conteúdo</li>
-      <li [attr.aria-current]="etapa() === 3 ? 'step' : null">3. Revisão</li>
+      <li [attr.aria-current]="etapa() === 2 ? 'step' : null">2. Editor e pré-visualização</li>
     </ol>
     @if (erro()) {
       <p class="br-message danger p-3" role="alert">{{ erro() }}</p>
@@ -160,86 +159,105 @@
         >
           Adicionar publicação
         </button>
-        @if (!estruturado && !publicacoes.length) {
+        @if (original && !estruturado && !publicacoes.length) {
           <div class="br-input">
             <label for="data-legada">Data de publicação do exemplo existente</label
             ><input id="data-legada" type="date" formControlName="dataPublicacaoLegada" />
           </div>
         }
         <div class="acoes">
-          <button class="br-button primary" type="submit">Continuar para conteúdo</button
+          <button class="br-button primary" type="submit">Continuar para o editor</button
           ><a routerLink="/gestao">Cancelar</a>
         </div>
       </form>
     }
     @if (etapa() === 2) {
-      <h2>Conteúdo da norma</h2>
+      <h2>Editor da norma</h2>
       <p>
-        <strong>{{ formulario.controls.epigrafe.value }}</strong>
+        Cole ou digite o conteúdo. Capítulos, seções, subseções, artigos e demais dispositivos são
+        reconhecidos na pré-visualização.
       </p>
-      @if (estruturado) {
-        <p>
-          Adicione o preâmbulo como texto livre no início. Organize os elementos dentro de seus
-          respectivos superiores e deixe as assinaturas na posição desejada.
-        </p>
-        <app-editor-conteudo [conteudo]="conteudo()" (alterar)="conteudo.set($event)" />
-      } @else {
-        <p>
-          Este exemplo usa texto simples. Mantenha uma linha para cada dispositivo; a revisão
-          mostrará os níveis reconhecidos.
-        </p>
-        <div class="br-textarea">
-          <label for="preambulo">Preâmbulo</label
-          ><textarea id="preambulo" rows="3" [formControl]="preambulo"></textarea>
-        </div>
-        <div class="br-textarea">
-          <label for="texto">Texto dos dispositivos</label
-          ><textarea id="texto" rows="18" maxlength="200000" [formControl]="texto"></textarea>
-        </div>
-        <div class="br-textarea">
-          <label for="assinaturas">Assinaturas (uma por linha)</label
-          ><textarea id="assinaturas" rows="3" [formControl]="assinaturas"></textarea>
-        </div>
-      }
+      <div class="editor-layout">
+        <section class="painel-editor" aria-labelledby="titulo-editor">
+          <h3 id="titulo-editor">Conteúdo</h3>
+          @if (estruturado) {
+            <p>
+              Este documento já possui estrutura e formatação, incluindo tabelas. Seu conteúdo
+              original está preservado na prévia.
+            </p>
+            <details class="ajustes-importacao">
+              <summary>Ajustar conteúdo importado</summary>
+              <app-editor-conteudo [conteudo]="conteudo()" (alterar)="conteudo.set($event)" />
+            </details>
+          } @else {
+            <div class="br-textarea">
+              <label for="texto">Texto da norma</label>
+              <p id="editor-ajuda">
+                Cole o corpo da norma, mantendo uma quebra de linha entre os elementos. A
+                identificação já foi informada.
+              </p>
+              <textarea
+                id="texto"
+                class="texto-editor"
+                rows="22"
+                [formControl]="texto"
+                (input)="erro.set('')"
+                aria-describedby="editor-ajuda editor-contagem"
+                placeholder="CAPÍTULO I&#10;DISPOSIÇÕES GERAIS&#10;&#10;Art. 1º Cole aqui o texto da norma.&#10;Parágrafo único. O conteúdo será reconhecido automaticamente."
+                spellcheck="true"
+                lang="pt-BR"
+              ></textarea>
+              <p id="editor-contagem" class="contagem">
+                {{ textoAtual().length }} / {{ limite }} caracteres
+              </p>
+            </div>
+            @if (limiteExcedido()) {
+              <p role="alert">
+                O texto excede 200.000 caracteres. Reduza o conteúdo para visualizar e salvar. O
+                texto colado foi mantido integralmente no editor.
+              </p>
+            }
+            @if (original?.norma.preambulo || original?.norma.assinaturas?.length) {
+              <details>
+                <summary>Preâmbulo e assinaturas do exemplo existente</summary>
+                <div class="br-textarea">
+                  <label for="preambulo">Preâmbulo</label
+                  ><textarea id="preambulo" rows="3" [formControl]="preambulo"></textarea>
+                </div>
+                <div class="br-textarea">
+                  <label for="assinaturas">Assinaturas (uma por linha)</label
+                  ><textarea id="assinaturas" rows="3" [formControl]="assinaturas"></textarea>
+                </div>
+              </details>
+            }
+          }
+        </section>
+        <section class="painel-previa" aria-labelledby="titulo-previa">
+          <h3 id="titulo-previa">Pré-visualização</h3>
+          <p class="reconhecimento" role="status">
+            {{ reconhecidos() || 'Aguardando conteúdo para reconhecer os elementos.' }}
+          </p>
+          <div class="documento-previa">
+            <app-norma-documento
+              [texto]="previa().texto"
+              [epigrafe]="previa().epigrafe"
+              [ementa]="previa().ementa"
+              [preambulo]="previa().preambulo"
+              [assinaturas]="previa().assinaturas"
+              [estrutura]="previa().leitura"
+              [mostrarIndice]="false"
+              prefixo="previa"
+            />
+          </div>
+        </section>
+      </div>
       <div class="acoes">
         <button type="button" class="br-button secondary" (click)="voltar(1)">
-          Voltar às informações</button
-        ><button type="button" class="br-button primary" (click)="revisar()">Revisar norma</button
-        ><a routerLink="/gestao">Cancelar</a>
+          Voltar às informações
+        </button>
+        <button type="button" class="br-button primary" (click)="salvar()">Salvar no mock</button>
+        <a routerLink="/gestao">Cancelar</a>
       </div>
-    }
-    @if (etapa() === 3) {
-      @if (revisao(); as registro) {
-        <h2>Revisão da norma</h2>
-        <p>
-          {{ situacoes[registro.norma.situacao] }} · Data do ato:
-          {{ registro.norma.dataAto | date: 'dd/MM/yyyy' }} · Publicação:
-          {{
-            registro.norma.dataPublicacao
-              ? (registro.norma.dataPublicacao | date: 'dd/MM/yyyy')
-              : 'Não informada'
-          }}
-        </p>
-        <app-norma-documento
-          [texto]="registro.norma.texto"
-          [epigrafe]="registro.norma.epigrafe"
-          [ementa]="registro.norma.ementa"
-          [preambulo]="registro.norma.preambulo"
-          [assinaturas]="registro.norma.assinaturas"
-          [estrutura]="registro.norma.leitura"
-          prefixo="revisao"
-        />
-        <details class="contrato">
-          <summary>Ver dados preparados para renderização</summary>
-          <pre>{{ registro | json }}</pre>
-        </details>
-        <div class="acoes">
-          <button type="button" class="br-button secondary" (click)="voltar(2)">
-            Voltar ao conteúdo</button
-          ><button type="button" class="br-button primary" (click)="salvar()">Salvar no mock</button
-          ><a routerLink="/gestao">Cancelar</a>
-        </div>
-      }
     }
   }
 </div>

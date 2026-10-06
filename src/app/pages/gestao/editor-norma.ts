@@ -1,5 +1,5 @@
-import { DatePipe, JsonPipe } from '@angular/common';
-import { ChangeDetectionStrategy, Component, inject, signal } from '@angular/core';
+import { ChangeDetectionStrategy, Component, computed, inject, signal } from '@angular/core';
+import { toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Acervo, RegistroAcervo } from '../../shared/normas/acervo';
@@ -10,11 +10,11 @@ import {
   FonteNorma,
   PublicacaoNorma,
   SituacaoNorma,
-  SITUACOES_NORMA,
 } from '../../shared/normas/norma';
+import { interpretarNorma } from '../../shared/normas/parser-norma';
 import { validarNorma } from '../../shared/normas/validar-norma';
 import { NormaDocumento } from '../../shared/components/norma-documento/norma-documento';
-import { CATEGORIAS } from '../search/filtro-busca';
+import { CATEGORIAS, dataCivil } from '../search/filtro-busca';
 import { EditorConteudo, novoId } from './editor-conteudo';
 
 const obrigatorio = [Validators.required, Validators.pattern(/\S/)];
@@ -40,7 +40,7 @@ const urlFonteValida = (controle: { value: string }) => {
 
 @Component({
   selector: 'app-editor-norma',
-  imports: [DatePipe, JsonPipe, ReactiveFormsModule, RouterLink, EditorConteudo, NormaDocumento],
+  imports: [ReactiveFormsModule, RouterLink, EditorConteudo, NormaDocumento],
   templateUrl: './editor-norma.html',
   styleUrl: './editor-norma.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -52,14 +52,12 @@ export class EditorNorma {
   readonly idExistente = inject(ActivatedRoute).snapshot.paramMap.get('id') ?? undefined;
   readonly original = this.idExistente ? this.acervo.obter(this.idExistente) : undefined;
   readonly ausente = !!this.idExistente && !this.original;
-  readonly estruturado = !this.original || !!this.original.estruturada;
+  readonly estruturado = !!this.original?.estruturada;
   readonly id = this.original?.norma.id ?? novoId('norma');
   readonly categorias = CATEGORIAS;
-  readonly situacoes = SITUACOES_NORMA;
   readonly etapa = signal(1);
   readonly erro = signal('');
   readonly conteudo = signal<readonly ConteudoNorma[]>(this.original?.estruturada?.conteudo ?? []);
-  readonly revisao = signal<RegistroAcervo | null>(null);
   readonly fontes = this.fb.array<ReturnType<EditorNorma['grupoFonte']>>([]);
   readonly publicacoes = this.fb.array<ReturnType<EditorNorma['grupoPublicacao']>>([]);
   readonly formulario = this.fb.group({
@@ -86,6 +84,40 @@ export class EditorNorma {
   ]);
   readonly preambulo = this.fb.control(this.original?.norma.preambulo ?? '');
   readonly assinaturas = this.fb.control(this.original?.norma.assinaturas.join('\n') ?? '');
+  readonly limite = 200_000;
+  readonly textoAtual = toSignal(this.texto.valueChanges, { initialValue: this.texto.value });
+  private readonly preambuloAtual = toSignal(this.preambulo.valueChanges, {
+    initialValue: this.preambulo.value,
+  });
+  private readonly assinaturasAtuais = toSignal(this.assinaturas.valueChanges, {
+    initialValue: this.assinaturas.value,
+  });
+  private readonly dadosAtuais = toSignal(this.formulario.valueChanges);
+  readonly limiteExcedido = computed(() => this.textoAtual().length > this.limite);
+  readonly leituraTexto = computed(() =>
+    interpretarNorma(this.limiteExcedido() ? '' : this.textoAtual()),
+  );
+  readonly previa = computed(() => {
+    this.dadosAtuais();
+    return this.montarRegistro().norma;
+  });
+  readonly reconhecidos = computed(() => {
+    const blocos = this.previa().leitura?.blocos ?? [];
+    const tipos = [
+      ['agrupamento', 'agrupamento', 'agrupamentos'],
+      ['artigo', 'artigo', 'artigos'],
+      ['paragrafo', 'parágrafo', 'parágrafos'],
+      ['inciso', 'inciso', 'incisos'],
+      ['alinea', 'alínea', 'alíneas'],
+      ['item', 'item', 'itens'],
+    ];
+    return tipos
+      .flatMap(([tipo, singular, plural]) => {
+        const quantidade = blocos.filter((bloco) => bloco.tipo === tipo).length;
+        return quantidade ? [`${quantidade} ${quantidade === 1 ? singular : plural}`] : [];
+      })
+      .join(' · ');
+  });
 
   constructor() {
     const norma = this.original?.norma;
@@ -155,7 +187,6 @@ export class EditorNorma {
   }
   voltar(etapa: number): void {
     this.erro.set('');
-    this.revisao.set(null);
     this.etapa.set(etapa);
   }
 
@@ -213,7 +244,18 @@ export class EditorNorma {
     }
     return {
       norma: {
-        ...this.original!.norma,
+        ...this.original?.norma,
+        id: this.id,
+        demonstracao: this.original?.norma.demonstracao ?? false,
+        extracao: this.original?.norma.extracao ?? {
+          data: dataCivil(new Date()),
+          metodo: 'manual',
+          htmlOriginalObtido: false,
+          layoutTabelas: 'nao_se_aplica',
+          observacoes: [
+            'Texto inserido no editor de demonstração; reconhecimento automático dos dispositivos.',
+          ],
+        },
         identificacao,
         categoria: especie,
         epigrafe,
@@ -223,15 +265,18 @@ export class EditorNorma {
         fontes,
         publicacoes,
         dataPublicacao: publicacoes[0]?.data ?? (dataPublicacaoLegada || null),
-        texto: this.texto.value,
-        preambulo: this.preambulo.value,
-        assinaturas: this.assinaturas.value.split(/\r?\n/).filter((linha) => linha.trim()),
-        leitura: undefined,
+        texto: this.textoAtual(),
+        preambulo: this.preambuloAtual(),
+        assinaturas: this.assinaturasAtuais()
+          .split(/\r?\n/)
+          .filter((linha) => linha.trim()),
+        leitura: this.leituraTexto(),
       },
     };
   }
 
-  revisar(): void {
+  salvar(): void {
+    if (this.etapa() !== 2) return;
     if (!this.validarInformacoes()) {
       this.etapa.set(1);
       return;
@@ -241,23 +286,13 @@ export class EditorNorma {
     ) {
       this.erro.set(
         this.estruturado
-          ? 'Adicione pelo menos um elemento ao conteúdo.'
-          : 'Informe o texto dos dispositivos (até 200.000 caracteres).',
+          ? 'O documento precisa ter conteúdo.'
+          : 'Cole ou digite o texto da norma (até 200.000 caracteres).',
       );
       return;
     }
     try {
-      this.revisao.set(this.montarRegistro());
-      this.erro.set('');
-      this.etapa.set(3);
-    } catch (erro) {
-      this.erro.set(erro instanceof Error ? erro.message : 'Não foi possível revisar o documento.');
-    }
-  }
-  salvar(): void {
-    if (this.etapa() !== 3 || !this.revisao()) return;
-    try {
-      this.acervo.salvarMock(this.revisao()!, this.idExistente);
+      this.acervo.salvarMock(this.montarRegistro(), this.idExistente);
       void this.router.navigate(['/normas', this.id]);
     } catch (erro) {
       this.erro.set(erro instanceof Error ? erro.message : 'Não foi possível salvar.');

@@ -4,9 +4,9 @@ Este guia descreve o código deste repositório. Comece pelas seções 1–3 par
 
 ## 1. Existem dois caminhos de entrada
 
-**Texto simples:** `interpretarNorma(texto)` tenta reconhecer o início de cada linha e produz uma lista de blocos. É usado em `/leitor` e nos exemplos que só têm `texto`.
+**Texto simples:** `interpretarNorma(texto)` tenta reconhecer o início de cada linha e produz uma lista de blocos. É usado em `/leitor`, no editor de novos cadastros com pré-visualização e nos exemplos em texto simples.
 
-**JSON estruturado:** `validarNorma(json)` verifica a estrutura suportada; `adaptarNorma(documento)` percorre a árvore já informada e produz a leitura. É usado na resolução importada e nos novos cadastros do mock. Aqui, capítulo, seção, artigo e seus filhos já estão identificados no JSON. Não se aplicam expressões regulares para reconstruí-los.
+**JSON estruturado:** `validarNorma(json)` verifica a estrutura suportada; `adaptarNorma(documento)` percorre a árvore já informada e produz a leitura. É usado na resolução importada e na edição de documentos que já vieram estruturados. Aqui, capítulo, seção, artigo e seus filhos já estão identificados no JSON. Não se aplicam expressões regulares para reconstruí-los.
 
 ```mermaid
 flowchart TD
@@ -38,7 +38,7 @@ O extrator HTML/Python que produziu o JSON original **não está neste repositó
 
 ## 2. O que deve ser informado antes do conteúdo
 
-No novo cadastro, a sequência é **informações principais → conteúdo → revisão → salvar no mock**. Os campos principais não são extraídos dos artigos.
+No novo cadastro, a sequência é **informações principais → editor com pré-visualização → salvar no mock**. Os campos principais não são extraídos dos artigos.
 
 A separação é:
 
@@ -51,9 +51,9 @@ A separação é:
 | Conteúdo               | Capítulos, seções, artigos, parágrafos, textos, tabelas, assinaturas e anexos | Representar o documento em ordem de leitura.                                |
 | Apresentação           | Alinhamento e dimensões opcionais                                             | Orientar os componentes visuais nos pontos que suportam essas propriedades. |
 
-**Preâmbulo:** no JSON atual, é um nó `texto` no início de `conteudo`; não há um campo `identificacao.preambulo`. Nos exemplos antigos de texto simples, `NormaLeitura.preambulo` existe separado e aparece antes dos dispositivos. O mock mantém essa distinção: novos documentos usam um texto livre inicial; exemplos antigos continuam com o campo separado.
+**Preâmbulo:** no JSON atual, é um nó `texto` no início de `conteudo`; não há um campo `identificacao.preambulo`. Nos exemplos antigos de texto simples, `NormaLeitura.preambulo` existe separado e aparece antes dos dispositivos. No editor simplificado, novos documentos recebem o preâmbulo no corpo textual; exemplos antigos continuam com o campo separado. Documentos JSON importados mantêm seu nó inicial.
 
-**Assinaturas:** no JSON são partes de categoria `assinatura`, na posição em que aparecem no array. No modelo antigo também podem ser fornecidas no array `NormaLeitura.assinaturas`, exibido após o corpo. Não preencher os dois caminhos para a mesma assinatura.
+**Assinaturas:** no JSON são partes de categoria `assinatura`, na posição em que aparecem no array. No modelo antigo também podem ser fornecidas no array `NormaLeitura.assinaturas`, exibido após o corpo. No novo editor, assinaturas coladas no corpo permanecem como texto comum, pois o parser não as identifica automaticamente. Não preencher dois caminhos para a mesma assinatura.
 
 ## 3. O JSON é uma árvore; a leitura é uma lista
 
@@ -285,7 +285,7 @@ interface LeituraNormativa {
 
 Há avisos para citação, anexo, dispositivo sem superior e, ao final, entrada não vazia sem nenhum artigo reconhecido. Texto vazio retorna arrays vazios, sem aviso. Texto livre comum não gera aviso individual.
 
-O parser em si não impõe tamanho máximo. O limite de 200.000 caracteres pertence ao leitor e à edição dos exemplos de texto simples. HTML colado não é interpretado como HTML.
+O parser em si não impõe tamanho máximo. O limite de 200.000 caracteres pertence ao leitor e ao editor de texto simples. No editor, uma colagem maior é mantida integralmente no campo, mas não é interpretada nem salva até sua correção. HTML colado não é interpretado como HTML.
 
 ## 5. Contrato do JSON estruturado
 
@@ -463,7 +463,7 @@ O título do agrupamento vem de `bloco.titulo`; se esse campo estiver ausente, p
 
 ## 8. O que o renderizador faz com os campos
 
-`NormaDocumento` recebe texto, epígrafe, ementa, preâmbulo, assinaturas, prefixo e `estrutura?`.
+`NormaDocumento` recebe texto, epígrafe, ementa, preâmbulo, assinaturas, prefixo, `estrutura?` e `mostrarIndice` (verdadeiro por padrão). A prévia do editor usa `mostrarIndice: false`; a leitura da norma salva mantém o índice.
 
 ```ts
 leitura = estrutura ?? interpretarNorma(texto);
@@ -504,25 +504,27 @@ O campo `apresentacao` é uma dica, com suporte seletivo no template atual:
 
 Links nos trechos aceitam HTTP, HTTPS e `mailto`, sem credenciais. Links das fontes aceitam HTTP/HTTPS, sem credenciais. Um endereço inseguro é exibido como texto. Não se usa `innerHTML` para o conteúdo normativo.
 
-## 9. Qual estrutura deve ser guardada e enviada no futuro
+## 9. O que o mock guarda após a simplificação do editor
 
-Para novos cadastros, o documento de edição é `NormaEstruturada`: identificação, situação, fontes, publicações, extração e árvore `conteudo`. No mock ele fica junto de sua projeção `NormaLeitura` no acervo em memória.
+**Cadastro por colagem/digitação:** o editor guarda metadados e texto original em `NormaLeitura`. O campo `leitura` contém o resultado atual de `interpretarNorma`. Não converte automaticamente o texto em uma árvore `NormaEstruturada`; os agrupamentos do índice continuam inferidos pela pilha da seção 7. Ao reabrir, o campo de edição recebe o mesmo texto que foi salvo.
 
-- **Entrada/editável:** `NormaEstruturada`.
-- **Saída para componentes:** `NormaLeitura`, incluindo `leitura.blocos`.
-- **Saída para navegação lateral:** `EntradaIndice[]`, derivada dos blocos.
+**Documento já estruturado:** conserva `NormaEstruturada` como fonte editável e usa `adaptarNorma` para produzir a leitura. O controle de ajuste da estrutura é recolhido na interface e a prévia preserva tabelas e formatação. Essa árvore não é descartada quando se alteram somente os metadados.
 
-Não guardar somente o HTML renderizado nem usar a lista de blocos como substituta do JSON: a adaptação incorpora textos, omite alguns campos na projeção e lineariza parte da informação para busca. Os IDs do JSON devem ser preservados em edições; os novos nós do mock recebem UUID com prefixo.
+Nos dois casos, `EntradaIndice[]` continua derivado dos blocos. A prévia e a leitura final usam o mesmo renderizador. A prévia é atualizada por signals ligados aos controles; o botão de salvar valida o conteúdo atual, sem uma etapa intermediária.
 
-Ainda não existe um endpoint de gravação, persistência, autenticação, auditoria, controle concorrente ou versionamento jurídico. O contrato HTTP deve ser definido ao integrar o backend; os métodos `salvarMock` e `excluirMock` não são chamadas de API.
+Não guardar somente HTML renderizado ou usar blocos adaptados para reconstruir o JSON de origem. A adaptação incorpora textos e omite alguns campos na projeção. IDs de documentos importados são preservados; IDs `linha-N` do texto simples são locais à leitura e mudam com as linhas.
+
+Ainda não existe endpoint de gravação, persistência, autenticação, auditoria, controle concorrente ou versionamento jurídico. `salvarMock` e `excluirMock` operam somente em memória.
 
 ## 10. Como conferir na prática
 
 1. Abra `/gestao/nova` e preencha os metadados obrigatórios.
-2. Em conteúdo, adicione um capítulo; dentro dele, uma seção; dentro da seção, um artigo.
-3. Preencha o rótulo do artigo e seu primeiro trecho de texto.
-4. Acrescente um parágrafo dentro do artigo. Confira a relação na revisão.
-5. Expanda “Ver dados preparados para renderização”: `estruturada.conteudo` mostra a árvore; `norma.leitura.blocos` mostra pais e profundidades.
-6. Compare com `/leitor`, colando o exemplo da seção 4.7. Nesse caminho os dispositivos são reconhecidos a partir das linhas.
+2. Clique em **Continuar para o editor**.
+3. Cole o exemplo da seção 4.7 no campo **Texto da norma**.
+4. Observe a identificação de capítulo, artigos, parágrafo, incisos, alíneas e item na prévia, sem montar cada parte manualmente.
+5. Edite um artigo e confira a alteração imediata. Clique em **Salvar no mock** para abrir a leitura com índice.
+6. Reabra a edição: o texto colado permanece no mesmo campo. Alterações dos metadados continuam separadas do corpo.
 
-Testes relacionados: `parser-norma.spec.ts` (reconhecimento), `adaptar-norma.spec.ts` (resolução/tabelas), `indice-norma.spec.ts` (índice), `acervo.spec.ts` (edição/raiz JSON) e `e2e/gestao.spec.ts` (fluxo de cadastro, edição e exclusão).
+A interface não exibe o JSON técnico. Para entender o contrato, use as tabelas e os exemplos deste guia.
+
+Testes relacionados: `parser-norma.spec.ts` (reconhecimento), `adaptar-norma.spec.ts` (resolução/tabelas), `indice-norma.spec.ts` (índice), `acervo.spec.ts` (edição/raiz JSON) e `e2e/gestao.spec.ts` (colagem, prévia automática, limites e operações de gestão).

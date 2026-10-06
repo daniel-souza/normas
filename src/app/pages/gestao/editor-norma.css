@@ -52,13 +52,57 @@ fieldset {
   min-width: 0;
   border: 1px solid var(--gray-20);
 }
-.contrato {
-  margin-block: var(--spacing-scale-3x);
+
+.editor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--spacing-scale-3x);
+  align-items: start;
 }
-pre {
-  max-height: 28rem;
+.painel-editor,
+.painel-previa {
+  min-width: 0;
+}
+.painel-previa {
+  border: 1px solid var(--gray-20);
+  border-radius: 4px;
+  padding: var(--spacing-scale-2x);
+  background: var(--gray-2);
+}
+.painel-editor h3,
+.painel-previa h3 {
+  margin-top: 0;
+  font-size: var(--font-size-scale-up-01);
+}
+.texto-editor {
+  min-height: 30rem;
+  line-height: 1.65;
+  resize: vertical;
+}
+.documento-previa {
+  max-height: 42rem;
   overflow: auto;
-  text-align: left;
+  padding: var(--spacing-scale-base);
+  background: var(--pure-0);
+}
+.ajustes-importacao {
+  max-height: 45rem;
+  overflow: auto;
+}
+.contagem {
+  text-align: right;
+  font-size: var(--font-size-scale-down-01);
+}
+.reconhecimento {
+  color: var(--blue-warm-vivid-70);
+}
+@media (max-width: 991px) {
+  .editor-layout {
+    grid-template-columns: 1fr;
+  }
+  .texto-editor {
+    min-height: 20rem;
+  }
 }
 @media (max-width: 767px) {
   .grade {

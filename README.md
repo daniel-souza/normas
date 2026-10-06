@@ -31,7 +31,7 @@ O build inicial inclui cerca de 1,84 MB sem compressão (aproximadamente 218 kB 
 
 Validação inicial do projeto (anterior ao mock de gestão): instalação com npm 11.19.1, build de produção, 31 testes unitários e 16 testes de navegador (desktop e celular) concluídos com sucesso. O servidor também foi reiniciado após a reinstalação das dependências.
 
-Validação do mock: build de produção, 34 testes unitários e 22 cenários de navegador em desktop/celular, com reexecução dos quatro casos afetados pela correção das datas civis.
+Validação do editor simplificado: build de produção, 34 testes unitários e 10 cenários de gestão em navegador (desktop/celular), incluindo colagem real, reconhecimento dos níveis, prévia automática, limites de texto, edição e exclusão.
 
 - [Parser e renderização: regras, níveis e metadados, com exemplos](docs/parser-e-renderizacao.md).
 - [Mock de cadastro, edição e exclusão](docs/gestao-mock.md).
@@ -43,7 +43,7 @@ Validação do mock: build de produção, 34 testes unitários e 22 cenários de
 
 A resolução importada está em `/normas/cnpq-resolucao-1-2023`; os exemplos anteriores continuam nos mesmos endereços. O índice lateral tem capítulos, seções e subseções recolhíveis e prévias dos artigos limitadas a 90 caracteres, com `...` quando necessário. As duas tabelas do anexo preservam células vazias e mescladas. A situação permanece “não verificada” e a publicação, não informada, como no JSON.
 
-Não há backend, autenticação, importação direta de PDF/HTML ou validação do schema JSON completo. O JSON incluído no projeto recebe validação estrutural antes da adaptação. O texto colado no leitor é processado em memória no navegador. O mock de gestão exige as informações principais antes do conteúdo, permite editar a árvore por formulários e reutiliza a busca e a leitura existentes. Todas as mutações são temporárias: recarregar a página restaura o acervo inicial.
+Não há backend, autenticação, importação direta de PDF/HTML ou validação do schema JSON completo. O JSON incluído no projeto recebe validação estrutural antes da adaptação. O texto colado no leitor é processado em memória no navegador. O mock de gestão exige as informações principais antes de abrir um editor de texto com reconhecimento automático e pré-visualização. Novos cadastros recebem o corpo por colagem ou digitação; documentos já estruturados conservam seus elementos em ajustes recolhidos. A busca e a leitura existentes são reutilizadas. Todas as mutações são temporárias: recarregar a página restaura o acervo inicial.
 
 ## Situação das fontes oficiais
 
