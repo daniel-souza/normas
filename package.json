@@ -22,6 +22,12 @@
     "@govbr-ds/core": "^3.7.0",
     "@govbr-ds/webcomponents": "^2.2.0",
     "@govbr-ds/webcomponents-angular": "^2.2.0",
+    "@tiptap/core": "^3.31.4",
+    "@tiptap/extension-table": "^3.31.4",
+    "@tiptap/extension-text-align": "^3.31.4",
+    "@tiptap/extension-unique-id": "^3.31.4",
+    "@tiptap/pm": "^3.31.4",
+    "@tiptap/starter-kit": "^3.31.4",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },

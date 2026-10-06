@@ -1,0 +1,69 @@
+<div class="editor-continuo">
+  <p id="ajuda-editor-continuo" class="ajuda-continuo">
+    Escreva ou cole o conteúdo formatado. Selecione um ou mais parágrafos para classificá-los. Um
+    elemento pode ficar vazio enquanto você prepara a norma.
+  </p>
+  <div class="ferramentas-continuo" role="group" aria-label="Formatação do texto">
+    <button
+      type="button"
+      aria-label="Negrito"
+      [attr.aria-pressed]="marcado('bold')"
+      (click)="formatar('bold')"
+    >
+      <strong>N</strong>
+    </button>
+    <button
+      type="button"
+      aria-label="Itálico"
+      [attr.aria-pressed]="marcado('italic')"
+      (click)="formatar('italic')"
+    >
+      <em>I</em>
+    </button>
+    <button
+      type="button"
+      aria-label="Sublinhado"
+      [attr.aria-pressed]="marcado('underline')"
+      (click)="formatar('underline')"
+    >
+      <u>S</u>
+    </button>
+    <button type="button" (click)="desfazer()">Desfazer</button>
+    <button type="button" (click)="refazer()">Refazer</button>
+    <button type="button" (click)="inserirTabela()">Inserir tabela</button>
+  </div>
+  <div class="classificacao-continuo">
+    <label for="classificacao-elemento">Classificar seleção</label>
+    <select
+      id="classificacao-elemento"
+      [value]="selecao()"
+      [disabled]="emTabela()"
+      (change)="classificar($any($event.target).value)"
+    >
+      <option value="">Reconhecer automaticamente</option>
+      @for (tipo of tipos; track tipo[0]) {
+        <option [value]="tipo[0]">{{ tipo[1] }}</option>
+      }
+      <option value="continuacao">Continuar elemento anterior</option>
+    </select>
+    <button type="button" [disabled]="emTabela()" (click)="classificar('', true)">
+      Separar elemento
+    </button>
+  </div>
+  @if (emTabela()) {
+    <div class="ferramentas-continuo" role="group" aria-label="Editar tabela">
+      <button type="button" (click)="tabela('addRowAfter')">+ Linha</button>
+      <button type="button" (click)="tabela('addColumnAfter')">+ Coluna</button>
+      <button type="button" (click)="tabela('mergeCells')">Mesclar células</button>
+      <button type="button" (click)="tabela('splitCell')">Dividir célula</button>
+      <button type="button" (click)="tabela('deleteRow')">Excluir linha</button>
+      <button type="button" (click)="tabela('deleteColumn')">Excluir coluna</button>
+      <button type="button" (click)="tabela('deleteTable')">Excluir tabela</button>
+    </div>
+  }
+  <div class="elemento-ativo">
+    <strong>{{ ativo() }}</strong> <span>{{ origem() }}</span>
+  </div>
+  <div #superficie class="superficie-continuo"></div>
+  <p class="feedback-continuo" aria-live="polite">{{ feedback() }}</p>
+</div>

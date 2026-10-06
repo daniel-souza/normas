@@ -11,7 +11,13 @@ import {
   PublicacaoNorma,
   SituacaoNorma,
 } from '../../shared/normas/norma';
-import { interpretarNorma } from '../../shared/normas/parser-norma';
+import type { JSONContent } from '@tiptap/core';
+import {
+  documentoDeTexto,
+  interpretarDocumentoEditor,
+  textoDoEditor,
+} from '../../shared/normas/documento-editor';
+import { EditorContinuo } from './editor-continuo';
 import { validarNorma } from '../../shared/normas/validar-norma';
 import { NormaDocumento } from '../../shared/components/norma-documento/norma-documento';
 import { CATEGORIAS, dataCivil } from '../search/filtro-busca';
@@ -40,7 +46,7 @@ const urlFonteValida = (controle: { value: string }) => {
 
 @Component({
   selector: 'app-editor-norma',
-  imports: [ReactiveFormsModule, RouterLink, EditorConteudo, NormaDocumento],
+  imports: [ReactiveFormsModule, RouterLink, EditorConteudo, EditorContinuo, NormaDocumento],
   templateUrl: './editor-norma.html',
   styleUrl: './editor-norma.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -78,14 +84,13 @@ export class EditorNorma {
     publicacoes: this.publicacoes,
     dataPublicacaoLegada: ['', dataCivilValida],
   });
-  readonly texto = this.fb.control(this.original?.norma.texto ?? '', [
-    Validators.required,
-    Validators.maxLength(200_000),
-  ]);
+  readonly documento = signal<JSONContent>(
+    this.original?.editor?.documento ?? documentoDeTexto(this.original?.norma.texto ?? ''),
+  );
   readonly preambulo = this.fb.control(this.original?.norma.preambulo ?? '');
   readonly assinaturas = this.fb.control(this.original?.norma.assinaturas.join('\n') ?? '');
   readonly limite = 200_000;
-  readonly textoAtual = toSignal(this.texto.valueChanges, { initialValue: this.texto.value });
+  readonly textoAtual = computed(() => textoDoEditor(this.documento()));
   private readonly preambuloAtual = toSignal(this.preambulo.valueChanges, {
     initialValue: this.preambulo.value,
   });
@@ -94,9 +99,16 @@ export class EditorNorma {
   });
   private readonly dadosAtuais = toSignal(this.formulario.valueChanges);
   readonly limiteExcedido = computed(() => this.textoAtual().length > this.limite);
-  readonly leituraTexto = computed(() =>
-    interpretarNorma(this.limiteExcedido() ? '' : this.textoAtual()),
+  readonly analise = computed(() =>
+    interpretarDocumentoEditor(
+      this.limiteExcedido() ? { type: 'doc', content: [] } : this.documento(),
+    ),
   );
+  readonly leituraTexto = computed(() => this.analise().leitura);
+  atualizarDocumento(documento: JSONContent): void {
+    this.documento.set(documento);
+    this.erro.set('');
+  }
   readonly previa = computed(() => {
     this.dadosAtuais();
     return this.montarRegistro().norma;
@@ -243,6 +255,7 @@ export class EditorNorma {
       return { estruturada, norma: adaptarNorma(validarNorma(estruturada)) };
     }
     return {
+      editor: { versao: 1, documento: this.documento() },
       norma: {
         ...this.original?.norma,
         id: this.id,
@@ -251,9 +264,11 @@ export class EditorNorma {
           data: dataCivil(new Date()),
           metodo: 'manual',
           htmlOriginalObtido: false,
-          layoutTabelas: 'nao_se_aplica',
+          layoutTabelas: this.leituraTexto().blocos.some((bloco) => bloco.tipo === 'tabela')
+            ? 'normalizado'
+            : 'nao_se_aplica',
           observacoes: [
-            'Texto inserido no editor de demonstração; reconhecimento automático dos dispositivos.',
+            'Documento inserido no editor contínuo; classificações automáticas e manuais, formatação e tabelas preservadas no rascunho.',
           ],
         },
         identificacao,
@@ -282,12 +297,16 @@ export class EditorNorma {
       return;
     }
     if (
-      this.estruturado ? !this.conteudo().length : this.texto.invalid || !this.texto.value.trim()
+      this.estruturado
+        ? !this.conteudo().length
+        : this.limiteExcedido() ||
+          (!this.textoAtual().trim() &&
+            !this.documento().content?.some((no) => no.attrs?.['normaTipo'] || no.type === 'table'))
     ) {
       this.erro.set(
         this.estruturado
           ? 'O documento precisa ter conteúdo.'
-          : 'Cole ou digite o texto da norma (até 200.000 caracteres).',
+          : 'Cole ou digite o texto, ou classifique um elemento vazio (até 200.000 caracteres).',
       );
       return;
     }

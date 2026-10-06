@@ -5,10 +5,13 @@ import { DOCUMENTO_CNPQ, NORMA_CNPQ } from './norma-cnpq';
 import { NormaEstruturada } from './conteudo-norma';
 import { adaptarNorma } from './adaptar-norma';
 import { validarNorma } from './validar-norma';
+import type { JSONContent } from '@tiptap/core';
 
 export interface RegistroAcervo {
   readonly norma: NormaLeitura;
   readonly estruturada?: NormaEstruturada;
+  /** Documento de edição v1: conteúdo rico e decisões manuais; prévia derivada. */
+  readonly editor?: { readonly versao: 1; readonly documento: JSONContent };
 }
 
 @Injectable({ providedIn: 'root' })

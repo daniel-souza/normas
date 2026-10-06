@@ -174,8 +174,8 @@
     @if (etapa() === 2) {
       <h2>Editor da norma</h2>
       <p>
-        Cole ou digite o conteúdo. Capítulos, seções, subseções, artigos e demais dispositivos são
-        reconhecidos na pré-visualização.
+        Escreva com os elementos destacados no próprio texto. Você pode ajustar a classificação e
+        acompanhar o resultado na pré-visualização.
       </p>
       <div class="editor-layout">
         <section class="painel-editor" aria-labelledby="titulo-editor">
@@ -190,27 +190,20 @@
               <app-editor-conteudo [conteudo]="conteudo()" (alterar)="conteudo.set($event)" />
             </details>
           } @else {
-            <div class="br-textarea">
-              <label for="texto">Texto da norma</label>
-              <p id="editor-ajuda">
-                Cole o corpo da norma, mantendo uma quebra de linha entre os elementos. A
-                identificação já foi informada.
-              </p>
-              <textarea
-                id="texto"
-                class="texto-editor"
-                rows="22"
-                [formControl]="texto"
-                (input)="erro.set('')"
-                aria-describedby="editor-ajuda editor-contagem"
-                placeholder="CAPÍTULO I&#10;DISPOSIÇÕES GERAIS&#10;&#10;Art. 1º Cole aqui o texto da norma.&#10;Parágrafo único. O conteúdo será reconhecido automaticamente."
-                spellcheck="true"
-                lang="pt-BR"
-              ></textarea>
-              <p id="editor-contagem" class="contagem">
-                {{ textoAtual().length }} / {{ limite }} caracteres
-              </p>
-            </div>
+            <app-editor-continuo [documento]="documento()" (alterar)="atualizarDocumento($event)" />
+            <p class="contagem">{{ textoAtual().length }} / {{ limite }} caracteres</p>
+            @if (leituraTexto().avisos.length) {
+              <details class="avisos-editor">
+                <summary>
+                  Conferir {{ leituraTexto().avisos.length }} indicações de estrutura
+                </summary>
+                <ul>
+                  @for (aviso of leituraTexto().avisos; track $index) {
+                    <li>{{ aviso }}</li>
+                  }
+                </ul>
+              </details>
+            }
             @if (limiteExcedido()) {
               <p role="alert">
                 O texto excede 200.000 caracteres. Reduza o conteúdo para visualizar e salvar. O

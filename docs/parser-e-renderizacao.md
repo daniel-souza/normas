@@ -2,14 +2,18 @@
 
 Este guia descreve o código deste repositório. Comece pelas seções 1–3 para entender o conjunto; as demais detalham as regras e os campos. Os exemplos são didáticos e fictícios.
 
-## 1. Existem dois caminhos de entrada
+## 1. Existem três caminhos de entrada
 
-**Texto simples:** `interpretarNorma(texto)` tenta reconhecer o início de cada linha e produz uma lista de blocos. É usado em `/leitor`, no editor de novos cadastros com pré-visualização e nos exemplos em texto simples.
+**Texto simples:** `interpretarNorma(texto)` tenta reconhecer o início de cada linha e produz uma lista de blocos. É usado em `/leitor` e na leitura dos exemplos antigos que ainda não têm estrutura salva.
+
+**Editor contínuo:** `interpretarDocumentoEditor(documento)` recebe o JSON editável, preserva classificações manuais e formatação e deriva os blocos com IDs estáveis. É o caminho dos novos cadastros. O algoritmo completo, os campos persistidos, os vazios e as tabelas estão em [Editor contínuo](editor-continuo.md).
 
 **JSON estruturado:** `validarNorma(json)` verifica a estrutura suportada; `adaptarNorma(documento)` percorre a árvore já informada e produz a leitura. É usado na resolução importada e na edição de documentos que já vieram estruturados. Aqui, capítulo, seção, artigo e seus filhos já estão identificados no JSON. Não se aplicam expressões regulares para reconstruí-los.
 
 ```mermaid
 flowchart TD
+  E[Documento editável] --> R[interpretarDocumentoEditor]
+  R --> L
   T[Texto simples] --> P[interpretarNorma]
   J[JSON estruturado] --> V[validarNorma]
   V --> A[adaptarNorma]
@@ -25,6 +29,7 @@ Arquivos principais:
 
 | Arquivo em `src/app/shared/normas/` | Responsabilidade                                                  |
 | ----------------------------------- | ----------------------------------------------------------------- |
+| `documento-editor.ts` | Reconhecimento e projeção do editor contínuo. |
 | `parser-norma.ts`                   | Reconhecer dispositivos no texto simples.                         |
 | `conteudo-norma.ts`                 | Contrato da árvore recebida em JSON.                              |
 | `norma.ts`                          | Identificação, fontes, publicações, extração e modelo de leitura. |
@@ -34,7 +39,7 @@ Arquivos principais:
 | `indice-norma.ts`                   | Construir o índice de agrupamentos e artigos.                     |
 | `acervo.ts`                         | Acervo em memória e operações do mock.                            |
 
-O extrator HTML/Python que produziu o JSON original **não está neste repositório**. Portanto, este guia não atribui suas regras ao parser TypeScript: a aplicação recebe o JSON pronto e não importa HTML/PDF diretamente.
+O extrator HTML/Python que produziu o JSON original **não está neste repositório**. Portanto, este guia não atribui suas regras ao parser TypeScript: esse caminho recebe o JSON pronto. A colagem HTML do editor contínuo tem seu próprio normalizador; não é o extrator que produziu a resolução importada.
 
 ## 2. O que deve ser informado antes do conteúdo
 
@@ -51,9 +56,9 @@ A separação é:
 | Conteúdo               | Capítulos, seções, artigos, parágrafos, textos, tabelas, assinaturas e anexos | Representar o documento em ordem de leitura.                                |
 | Apresentação           | Alinhamento e dimensões opcionais                                             | Orientar os componentes visuais nos pontos que suportam essas propriedades. |
 
-**Preâmbulo:** no JSON atual, é um nó `texto` no início de `conteudo`; não há um campo `identificacao.preambulo`. Nos exemplos antigos de texto simples, `NormaLeitura.preambulo` existe separado e aparece antes dos dispositivos. No editor simplificado, novos documentos recebem o preâmbulo no corpo textual; exemplos antigos continuam com o campo separado. Documentos JSON importados mantêm seu nó inicial.
+**Preâmbulo:** no JSON atual, é um nó `texto` no início de `conteudo`; não há um campo `identificacao.preambulo`. Nos exemplos antigos de texto simples, `NormaLeitura.preambulo` existe separado e aparece antes dos dispositivos. No editor contínuo, o usuário pode classificar um ou mais parágrafos como `preambulo` no corpo; exemplos antigos continuam com o campo separado. Documentos JSON importados mantêm seu nó inicial.
 
-**Assinaturas:** no JSON são partes de categoria `assinatura`, na posição em que aparecem no array. No modelo antigo também podem ser fornecidas no array `NormaLeitura.assinaturas`, exibido após o corpo. No novo editor, assinaturas coladas no corpo permanecem como texto comum, pois o parser não as identifica automaticamente. Não preencher dois caminhos para a mesma assinatura.
+**Assinaturas:** no JSON são partes de categoria `assinatura`, na posição em que aparecem no array. No modelo antigo também podem ser fornecidas no array `NormaLeitura.assinaturas`, exibido após o corpo. No editor contínuo, o usuário pode classificar o trecho como `assinatura`; não há inferência automática de quem assina. Não preencher dois caminhos para a mesma assinatura.
 
 ## 3. O JSON é uma árvore; a leitura é uma lista
 
@@ -285,7 +290,7 @@ interface LeituraNormativa {
 
 Há avisos para citação, anexo, dispositivo sem superior e, ao final, entrada não vazia sem nenhum artigo reconhecido. Texto vazio retorna arrays vazios, sem aviso. Texto livre comum não gera aviso individual.
 
-O parser em si não impõe tamanho máximo. O limite de 200.000 caracteres pertence ao leitor e ao editor de texto simples. No editor, uma colagem maior é mantida integralmente no campo, mas não é interpretada nem salva até sua correção. HTML colado não é interpretado como HTML.
+O parser em si não impõe tamanho máximo. O limite de 200.000 caracteres pertence às interfaces de leitura e edição. No editor contínuo, uma colagem maior é mantida integralmente, mas não é interpretada nem salva até sua correção. O parser `interpretarNorma` trata HTML como texto literal; a colagem formatada usa outro caminho, descrito no guia do editor contínuo.
 
 ## 5. Contrato do JSON estruturado
 
@@ -504,15 +509,15 @@ O campo `apresentacao` é uma dica, com suporte seletivo no template atual:
 
 Links nos trechos aceitam HTTP, HTTPS e `mailto`, sem credenciais. Links das fontes aceitam HTTP/HTTPS, sem credenciais. Um endereço inseguro é exibido como texto. Não se usa `innerHTML` para o conteúdo normativo.
 
-## 9. O que o mock guarda após a simplificação do editor
+## 9. O que o mock guarda
 
-**Cadastro por colagem/digitação:** o editor guarda metadados e texto original em `NormaLeitura`. O campo `leitura` contém o resultado atual de `interpretarNorma`. Não converte automaticamente o texto em uma árvore `NormaEstruturada`; os agrupamentos do índice continuam inferidos pela pilha da seção 7. Ao reabrir, o campo de edição recebe o mesmo texto que foi salvo.
+**Cadastro por colagem/digitação:** `RegistroAcervo.editor` guarda a versão `1` e o JSON do documento editável, incluindo vazios e escolhas manuais. `NormaLeitura.texto` contém a linearização para busca; `leitura` contém a projeção de `interpretarDocumentoEditor`. Seus blocos fornecem `paiId` explícito e IDs estáveis. Não há conversão automática para a árvore `NormaEstruturada`. Ao reabrir, o editor recebe o JSON guardado, preservando tabelas, formatação e classificações. Consulte o [contrato completo do editor](editor-continuo.md).
 
 **Documento já estruturado:** conserva `NormaEstruturada` como fonte editável e usa `adaptarNorma` para produzir a leitura. O controle de ajuste da estrutura é recolhido na interface e a prévia preserva tabelas e formatação. Essa árvore não é descartada quando se alteram somente os metadados.
 
 Nos dois casos, `EntradaIndice[]` continua derivado dos blocos. A prévia e a leitura final usam o mesmo renderizador. A prévia é atualizada por signals ligados aos controles; o botão de salvar valida o conteúdo atual, sem uma etapa intermediária.
 
-Não guardar somente HTML renderizado ou usar blocos adaptados para reconstruir o JSON de origem. A adaptação incorpora textos e omite alguns campos na projeção. IDs de documentos importados são preservados; IDs `linha-N` do texto simples são locais à leitura e mudam com as linhas.
+Não guardar somente HTML renderizado ou usar blocos adaptados para reconstruir o JSON de origem. A adaptação incorpora textos e omite alguns campos na projeção. IDs de documentos importados são preservados; IDs `linha-N` do leitor simples são locais à leitura e mudam com as linhas. O editor contínuo usa IDs `ed-UUID` que independem da posição.
 
 Ainda não existe endpoint de gravação, persistência, autenticação, auditoria, controle concorrente ou versionamento jurídico. `salvarMock` e `excluirMock` operam somente em memória.
 
@@ -523,8 +528,9 @@ Ainda não existe endpoint de gravação, persistência, autenticação, auditor
 3. Cole o exemplo da seção 4.7 no campo **Texto da norma**.
 4. Observe a identificação de capítulo, artigos, parágrafo, incisos, alíneas e item na prévia, sem montar cada parte manualmente.
 5. Edite um artigo e confira a alteração imediata. Clique em **Salvar no mock** para abrir a leitura com índice.
-6. Reabra a edição: o texto colado permanece no mesmo campo. Alterações dos metadados continuam separadas do corpo.
+6. Selecione o texto inicial e classifique como Preâmbulo; salve e reabra para conferir a decisão manual.
+7. Reabra a edição: conteúdo, formatação e classificações são preservados. Alterações dos metadados continuam separadas do corpo.
 
 A interface não exibe o JSON técnico. Para entender o contrato, use as tabelas e os exemplos deste guia.
 
-Testes relacionados: `parser-norma.spec.ts` (reconhecimento), `adaptar-norma.spec.ts` (resolução/tabelas), `indice-norma.spec.ts` (índice), `acervo.spec.ts` (edição/raiz JSON) e `e2e/gestao.spec.ts` (colagem, prévia automática, limites e operações de gestão).
+Testes relacionados: `parser-norma.spec.ts` (reconhecimento), `adaptar-norma.spec.ts` (resolução/tabelas), `indice-norma.spec.ts` (índice), `acervo.spec.ts` (edição/raiz JSON) e `e2e/gestao.spec.ts` (colagem, prévia automática, limites e operações de gestão), `documento-editor.spec.ts` e `e2e/editor-continuo.spec.ts` (documento rico e classificações manuais).

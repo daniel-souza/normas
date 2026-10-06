@@ -70,7 +70,7 @@ O schema completo permitirá ampliar a validação além do formato observado no
 
 ## Gestão em memória
 
-A funcionalidade `pages/gestao` acrescenta cadastro, edição e exclusão ao mesmo `Acervo`. Novos documentos guardam texto e metadados em `NormaLeitura`, com interpretação automática na prévia. Documentos importados mantêm `NormaEstruturada` como fonte de edição e derivam `NormaLeitura` ao salvar. A identificação integral é preservada em `NormaLeitura.identificacao`. A marca `alteracaoMock` informa alterações temporárias na leitura, sem afirmar que o documento importado original é fictício.
+A funcionalidade `pages/gestao` acrescenta cadastro, edição e exclusão ao mesmo `Acervo`. Novos documentos guardam JSON editável em `RegistroAcervo.editor`, com IDs estáveis, classificações manuais, marcas e tabelas. `interpretarDocumentoEditor` deriva `NormaLeitura.leitura`; a linearização alimenta a busca. Tiptap/ProseMirror controla a superfície e as decorações de classificação. Documentos importados mantêm `NormaEstruturada` como fonte de edição e derivam `NormaLeitura` ao salvar. A identificação integral é preservada em `NormaLeitura.identificacao`. A marca `alteracaoMock` informa alterações temporárias na leitura, sem afirmar que o documento importado original é fictício.
 
 O editor valida metadados antes de exibir o campo de texto e a prévia. A interface tem duas etapas; os controles de estrutura ficam recolhidos e são usados somente nos documentos importados. A exclusão exige confirmação na tela e altera somente a sessão. Não há persistência ou API. A busca continua usando o mesmo signal de normas, com a página limitada ao total atual após exclusões.
 

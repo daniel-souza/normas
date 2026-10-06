@@ -9,6 +9,7 @@ export type TipoBloco =
   | 'alinea'
   | 'item'
   | 'texto'
+  | 'preambulo'
   | 'tabela'
   | 'assinatura';
 

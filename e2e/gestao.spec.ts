@@ -120,23 +120,23 @@ Art. 2º O texto <script>window.executou = true</script> permanece literal.`;
   await page.evaluate((valor) => navigator.clipboard.writeText(valor), texto);
   await page.getByLabel('Texto da norma', { exact: true }).focus();
   await page.keyboard.press('Control+V');
-  await expect(page.getByLabel('Texto da norma', { exact: true })).toHaveValue(texto);
+  await expect(page.getByLabel('Texto da norma', { exact: true })).toHaveText(texto, {
+    useInnerText: true,
+  });
   const previa = page.getByRole('article');
   await expect(previa.locator('[data-tipo="artigo"]')).toHaveCount(2);
   await expect(previa.locator('.agrupamento')).toHaveCount(3);
-  await expect(previa.locator('[data-tipo="paragrafo"]')).toHaveAttribute(
-    'data-pai',
-    'previa-linha-7',
-  );
-  await expect(previa.locator('[data-tipo="inciso"]')).toHaveAttribute(
-    'data-pai',
-    'previa-linha-8',
-  );
-  await expect(previa.locator('[data-tipo="alinea"]')).toHaveAttribute(
-    'data-pai',
-    'previa-linha-9',
-  );
-  await expect(previa.locator('[data-tipo="item"]')).toHaveAttribute('data-pai', 'previa-linha-10');
+  for (const [filho, pai] of [
+    ['paragrafo', 'artigo'],
+    ['inciso', 'paragrafo'],
+    ['alinea', 'inciso'],
+    ['item', 'alinea'],
+  ]) {
+    await expect(previa.locator(`[data-tipo="${filho}"]`)).toHaveAttribute(
+      'data-pai',
+      (await previa.locator(`[data-tipo="${pai}"]`).first().getAttribute('id')) as string,
+    );
+  }
   await expect(page.getByRole('status')).toContainText(
     '3 agrupamentos · 2 artigos · 1 parágrafo · 1 inciso · 1 alínea · 1 item',
   );
@@ -151,7 +151,9 @@ Art. 2º O texto <script>window.executou = true</script> permanece literal.`;
   ).toHaveCount(3);
   await page.getByRole('link', { name: 'Editar no mock' }).click();
   await page.getByRole('button', { name: 'Continuar para o editor' }).click();
-  await expect(page.getByLabel('Texto da norma', { exact: true })).toHaveValue(texto);
+  await expect(page.getByLabel('Texto da norma', { exact: true })).toHaveText(texto, {
+    useInnerText: true,
+  });
 });
 
 test('não salva texto vazio ou além do limite e mantém o texto integral para correção', async ({
@@ -164,7 +166,9 @@ test('não salva texto vazio ou além do limite e mantém o texto integral para 
   await expect(page.getByRole('alert')).toContainText('Cole ou digite');
   const texto = 'x'.repeat(200001);
   await page.getByLabel('Texto da norma', { exact: true }).fill(texto);
-  await expect(page.getByLabel('Texto da norma', { exact: true })).toHaveValue(texto);
+  await expect(page.getByLabel('Texto da norma', { exact: true })).toHaveText(texto, {
+    useInnerText: true,
+  });
   await expect(
     page.getByText('O texto excede 200.000 caracteres.', { exact: false }),
   ).toBeVisible();
