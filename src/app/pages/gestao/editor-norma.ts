@@ -87,14 +87,14 @@ export class EditorNorma {
   readonly documento = signal<JSONContent>(
     this.original?.editor?.documento ?? documentoDeTexto(this.original?.norma.texto ?? ''),
   );
-  readonly preambulo = this.fb.control(this.original?.norma.preambulo ?? '');
-  readonly assinaturas = this.fb.control(this.original?.norma.assinaturas.join('\n') ?? '');
+  readonly preambulo = this.fb.control<string>(this.original?.norma.preambulo ?? '');
+  readonly assinaturas = this.fb.control<string>(this.original?.norma.assinaturas.join('\n') ?? '');
   readonly limite = 200_000;
   readonly textoAtual = computed(() => textoDoEditor(this.documento()));
-  private readonly preambuloAtual = toSignal(this.preambulo.valueChanges, {
+  private readonly preambuloAtual = toSignal<string, string>(this.preambulo.valueChanges, {
     initialValue: this.preambulo.value,
   });
-  private readonly assinaturasAtuais = toSignal(this.assinaturas.valueChanges, {
+  private readonly assinaturasAtuais = toSignal<string, string>(this.assinaturas.valueChanges, {
     initialValue: this.assinaturas.value,
   });
   private readonly dadosAtuais = toSignal(this.formulario.valueChanges);

@@ -1,12 +1,12 @@
 /* Ordem das camadas de estilos */
-@layer theme, base, icons, govbr, components, utilities;
+@layer theme, base, govbr, components, utilities;
 
 
 /* Tema do Tailwind com prefixo tw */
 @import "tailwindcss/theme.css" layer(theme) prefix(tw);
 
-/* Ícones utilizados pelo Design System gov.br */
-@import "@fortawesome/fontawesome-free/css/all.min.css" layer(icons);
+/* Font Awesome é carregado diretamente em angular.json para que o builder
+   resolva as webfonts a partir do pacote, sem rebase pelo Tailwind/PostCSS. */
 
 /* Base e componentes do Design System gov.br */
 @import "@govbr-ds/core/dist/core.min.css" layer(govbr);

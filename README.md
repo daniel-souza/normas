@@ -13,6 +13,12 @@ npm start
 
 A porta de desenvolvimento é 4200. As rotas são `/` (consulta), `/normas/:id` (documento), `/leitor` (texto simples), `/gestao` (mock de gestão), `/gestao/nova` (cadastro) e `/gestao/:id/editar` (edição). O desenvolvimento local não exige chaves, autenticação ou serviços externos.
 
+Os pacotes Angular estão alinhados em **22.2.1**, com `piscina` **5.3.2** e `source-map-js` **1.2.2** no lockfile. Após atualizar a branch, pare o servidor com Ctrl+C e reinstale usando `npm ci`. Se estiver vindo da versão anterior com falha nas fontes, execute `npx ng cache clean` antes de `npm start`. Não é necessário usar `npm audit fix --force`.
+
+O Font Awesome é uma entrada de estilos em `angular.json`: o builder resolve as fontes a partir do pacote. Seu CSS não passa pelo `@import` do Tailwind/PostCSS em `src/styles.css`. Os controles e signals de preâmbulo/assinaturas têm tipos `string` explícitos.
+
+Verificação desta correção em 06/10/2026: instalação limpa, build, 44 testes unitários e `npm audit` sem vulnerabilidades. Servidor de desenvolvimento e prévia do editor conferidos no Chromium, com as fontes solid, regular e brands carregadas com HTTP 200. Ambiente de execução Linux; Windows não foi executado nesta verificação.
+
 ## Verificar
 
 ```bash
