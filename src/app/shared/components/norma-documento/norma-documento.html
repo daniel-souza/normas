@@ -9,7 +9,7 @@
   </details>
 }
 <div class="leitura-layout">
-  @if (indice().length) {
+  @if (mostrarIndice() && indice().length) {
     <app-indice-norma
       class="sumario"
       [itens]="indice()"

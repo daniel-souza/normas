@@ -2,6 +2,18 @@ import { Routes } from '@angular/router';
 
 export const routes: Routes = [
   {
+    path: 'gestao',
+    loadComponent: () => import('./pages/gestao/gestao').then((m) => m.Gestao),
+  },
+  {
+    path: 'gestao/nova',
+    loadComponent: () => import('./pages/gestao/editor-norma').then((m) => m.EditorNorma),
+  },
+  {
+    path: 'gestao/:id/editar',
+    loadComponent: () => import('./pages/gestao/editor-norma').then((m) => m.EditorNorma),
+  },
+  {
     path: '',
     loadComponent: () => import('./pages/search/search').then((m) => m.Search),
   },

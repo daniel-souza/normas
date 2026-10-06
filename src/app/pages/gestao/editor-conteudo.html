@@ -1,0 +1,143 @@
+<div class="arvore" [attr.aria-label]="contexto()">
+  @for (no of conteudo(); track no.id; let i = $index) {
+    <details class="no" open>
+      <summary>
+        {{
+          no.tipo === 'parte'
+            ? no.categoria + ': ' + (no.rotulo || no.titulo || 'Novo elemento')
+            : no.tipo === 'texto'
+              ? 'Texto'
+              : 'Tabela'
+        }}
+      </summary>
+      <div class="campos">
+        @switch (no.tipo) {
+          @case ('parte') {
+            <div class="br-input">
+              <label [for]="no.id + '-rotulo'">Rótulo (ex.: Art. 1º, CAPÍTULO I)</label
+              ><input
+                [id]="no.id + '-rotulo'"
+                [ngModel]="no.rotulo ?? ''"
+                (ngModelChange)="campo(i, no, 'rotulo', $event)"
+              />
+            </div>
+            <div class="br-input">
+              <label [for]="no.id + '-numero'">Número do elemento</label
+              ><input
+                [id]="no.id + '-numero'"
+                [ngModel]="no.numero ?? ''"
+                (ngModelChange)="campo(i, no, 'numero', $event)"
+              />
+            </div>
+            <div class="br-input">
+              <label [for]="no.id + '-titulo'">Título do elemento</label
+              ><input
+                [id]="no.id + '-titulo'"
+                [ngModel]="no.titulo ?? ''"
+                (ngModelChange)="campo(i, no, 'titulo', $event)"
+              />
+            </div>
+            <p>
+              Os elementos adicionados abaixo pertencem a {{ no.rotulo || no.categoria }}. O
+              primeiro texto de um dispositivo será seu caput.
+            </p>
+            <app-editor-conteudo
+              [conteudo]="no.conteudo"
+              [contexto]="no.rotulo || no.categoria"
+              (alterar)="filhos(i, no, $event)"
+            />
+          }
+          @case ('texto') {
+            @for (parte of no.trechos; track $index; let t = $index) {
+              <div class="br-textarea">
+                <label [for]="no.id + '-texto-' + t">Texto do trecho {{ t + 1 }}</label
+                ><textarea
+                  rows="3"
+                  [id]="no.id + '-texto-' + t"
+                  [ngModel]="parte.texto"
+                  (ngModelChange)="trecho(i, no, t, $event)"
+                ></textarea>
+              </div>
+              @if (parte.marcas?.length || parte.href) {
+                <p class="dica">
+                  Formatação preservada: {{ parte.marcas?.join(', ') }}
+                  {{ parte.href ? ' · Link: ' + parte.href : '' }}
+                </p>
+              }
+            }
+            <button
+              type="button"
+              class="br-button secondary small"
+              (click)="adicionarTrecho(i, no)"
+            >
+              Adicionar trecho
+            </button>
+          }
+          @case ('tabela') {
+            <p>
+              {{ no.numeroColunas }} colunas · {{ no.linhas.length }} linhas. As células e
+              mesclagens são preservadas; neste mock, edite o conteúdo de cada célula.
+            </p>
+            @for (linha of no.linhas; track linha.id; let l = $index) {
+              @for (cel of linha.celulas; track cel.id; let c = $index) {
+                <details>
+                  <summary>
+                    Linha {{ l + 1 }}, célula {{ c + 1 }} ({{ cel.colspan }} × {{ cel.rowspan }})
+                  </summary>
+                  <app-editor-conteudo
+                    [conteudo]="cel.conteudo"
+                    [contexto]="'Célula ' + (c + 1)"
+                    (alterar)="celula(i, no, l, c, $event)"
+                  />
+                </details>
+              }
+            }
+          }
+        }
+        <div class="acoes">
+          <button
+            type="button"
+            class="br-button secondary small"
+            [disabled]="i === 0"
+            (click)="mover(i, -1)"
+          >
+            Subir
+          </button>
+          <button
+            type="button"
+            class="br-button secondary small"
+            [disabled]="i === conteudo().length - 1"
+            (click)="mover(i, 1)"
+          >
+            Descer
+          </button>
+          <button type="button" class="br-button secondary small" (click)="removerPendente = no.id">
+            Remover elemento
+          </button>
+        </div>
+        @if (removerPendente === no.id) {
+          <p>Remover este elemento e todos os seus filhos do rascunho?</p>
+          <button type="button" class="br-button secondary small" (click)="remover(no.id)">
+            Confirmar remoção
+          </button>
+          <button type="button" class="br-button secondary small" (click)="removerPendente = null">
+            Manter elemento
+          </button>
+        }
+      </div>
+    </details>
+  }
+  <div class="adicionar">
+    <label [for]="controleId">Novo elemento em {{ contexto() }}</label>
+    <select [id]="controleId" [(ngModel)]="escolha">
+      <option value="texto">Texto livre / preâmbulo</option>
+      @for (categoria of categorias; track categoria) {
+        <option [value]="categoria">{{ categoria }}</option>
+      }
+      <option value="tabela">Tabela simples (2 × 2)</option>
+    </select>
+    <button type="button" class="br-button secondary small" (click)="adicionar()">
+      Adicionar elemento
+    </button>
+  </div>
+</div>

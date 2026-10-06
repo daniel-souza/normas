@@ -1,0 +1,256 @@
+<div class="container-lg py-5">
+  <p><a routerLink="/gestao">Voltar à gestão</a></p>
+  @if (ausente) {
+    <h1>Norma não encontrada</h1>
+    <p>O documento solicitado não está disponível nesta sessão.</p>
+  } @else {
+    <h1>{{ idExistente ? 'Editar norma' : 'Nova norma' }}</h1>
+    <p class="br-message info p-3">
+      Demonstração em memória. Recarregar a página descarta todas as alterações.
+    </p>
+    <ol class="etapas" aria-label="Etapas do cadastro">
+      <li [attr.aria-current]="etapa() === 1 ? 'step' : null">1. Informações principais</li>
+      <li [attr.aria-current]="etapa() === 2 ? 'step' : null">2. Editor e pré-visualização</li>
+    </ol>
+    @if (erro()) {
+      <p class="br-message danger p-3" role="alert">{{ erro() }}</p>
+    }
+    @if (etapa() === 1) {
+      <h2>Informações principais</h2>
+      <p>
+        Preencha os campos com * antes de inserir capítulos, seções, subseções, artigos e outros
+        elementos.
+      </p>
+      <form [formGroup]="formulario" (ngSubmit)="continuar()">
+        <div class="grade">
+          <div class="br-input">
+            <label for="orgao">Órgão emissor *</label
+            ><input id="orgao" formControlName="orgao" required />
+          </div>
+          <div class="campo">
+            <label for="especie">Espécie *</label
+            ><select id="especie" formControlName="especie">
+              @for (categoria of categorias; track categoria.value) {
+                <option [value]="categoria.value">{{ categoria.value }}</option>
+              }
+            </select>
+          </div>
+          <div class="br-input">
+            <label for="numero">Número *</label
+            ><input id="numero" formControlName="numero" required />
+          </div>
+          <div class="br-input">
+            <label for="ano">Ano *</label
+            ><input id="ano" type="number" min="1" max="9999" formControlName="ano" required />
+          </div>
+          <div class="br-input">
+            <label for="data-ato">Data do ato *</label
+            ><input id="data-ato" type="date" formControlName="dataAto" required />
+          </div>
+          <div class="campo">
+            <label for="situacao">Situação *</label
+            ><select id="situacao" formControlName="situacao">
+              <option value="nao_verificada">Situação não verificada</option>
+              <option value="vigente">Vigente</option>
+              <option value="revogada">Revogada</option>
+            </select>
+          </div>
+          <div class="br-input inteira">
+            <label for="epigrafe">Epígrafe *</label
+            ><input id="epigrafe" formControlName="epigrafe" required />
+          </div>
+          <div class="br-input inteira">
+            <label for="titulo">Título descritivo</label
+            ><input id="titulo" formControlName="titulo" />
+          </div>
+          <div class="br-textarea inteira">
+            <label for="ementa">Ementa *</label
+            ><textarea id="ementa" rows="3" formControlName="ementa" required></textarea>
+          </div>
+          <div class="br-input inteira">
+            <label for="processo">Processo</label><input id="processo" formControlName="processo" />
+          </div>
+        </div>
+        <h3>Fontes e publicações</h3>
+        <p>
+          Se a publicação não for conhecida, deixe a lista vazia. A data do ato não substitui a data
+          de publicação.
+        </p>
+        <div formArrayName="fontes">
+          @for (fonte of fontes.controls; track fonte; let f = $index) {
+            <fieldset [formGroupName]="f">
+              <legend>Fonte {{ f + 1 }}</legend>
+              <div class="br-input">
+                <label [for]="'fonte-desc-' + f">Descrição da fonte *</label
+                ><input [id]="'fonte-desc-' + f" formControlName="descricao" required />
+              </div>
+              <div class="br-input">
+                <label [for]="'fonte-url-' + f">URL da fonte *</label
+                ><input [id]="'fonte-url-' + f" type="url" formControlName="url" required />
+              </div>
+              <button
+                type="button"
+                class="br-button secondary small"
+                (click)="removerFonte(f)"
+                [disabled]="fonteEmUso(fonte.controls.id.value)"
+              >
+                Remover fonte
+              </button>
+              @if (fonteEmUso(fonte.controls.id.value)) {
+                <p>Esta fonte está vinculada a uma publicação.</p>
+              }
+            </fieldset>
+          }
+        </div>
+        <button type="button" class="br-button secondary" (click)="adicionarFonte()">
+          Adicionar fonte
+        </button>
+        <div formArrayName="publicacoes">
+          @for (publicacao of publicacoes.controls; track publicacao; let p = $index) {
+            <fieldset [formGroupName]="p">
+              <legend>Publicação {{ p + 1 }}</legend>
+              <div class="grade">
+                <div class="br-input">
+                  <label [for]="'veiculo-' + p">Veículo *</label
+                  ><input [id]="'veiculo-' + p" formControlName="veiculo" required />
+                </div>
+                <div class="br-input">
+                  <label [for]="'data-pub-' + p">Data da publicação *</label
+                  ><input [id]="'data-pub-' + p" type="date" formControlName="data" required />
+                </div>
+                <div class="campo inteira">
+                  <label [for]="'pub-fonte-' + p">Fonte da publicação *</label
+                  ><select [id]="'pub-fonte-' + p" formControlName="fonteId">
+                    @for (fonte of fontes.controls; track fonte) {
+                      <option [value]="fonte.controls.id.value">
+                        {{ fonte.controls.descricao.value || 'Fonte sem descrição' }}
+                      </option>
+                    }
+                  </select>
+                </div>
+                <div class="br-input">
+                  <label [for]="'edicao-' + p">Edição</label
+                  ><input [id]="'edicao-' + p" formControlName="edicao" />
+                </div>
+                <div class="br-input">
+                  <label [for]="'secao-' + p">Seção da publicação</label
+                  ><input [id]="'secao-' + p" formControlName="secao" />
+                </div>
+                <div class="br-input">
+                  <label [for]="'pagina-' + p">Página</label
+                  ><input [id]="'pagina-' + p" formControlName="pagina" />
+                </div>
+              </div>
+              <button
+                type="button"
+                class="br-button secondary small"
+                (click)="publicacoes.removeAt(p)"
+              >
+                Remover publicação
+              </button>
+            </fieldset>
+          }
+        </div>
+        <button
+          type="button"
+          class="br-button secondary"
+          [disabled]="!fontes.length"
+          (click)="adicionarPublicacao()"
+        >
+          Adicionar publicação
+        </button>
+        @if (original && !estruturado && !publicacoes.length) {
+          <div class="br-input">
+            <label for="data-legada">Data de publicação do exemplo existente</label
+            ><input id="data-legada" type="date" formControlName="dataPublicacaoLegada" />
+          </div>
+        }
+        <div class="acoes">
+          <button class="br-button primary" type="submit">Continuar para o editor</button
+          ><a routerLink="/gestao">Cancelar</a>
+        </div>
+      </form>
+    }
+    @if (etapa() === 2) {
+      <h2>Editor da norma</h2>
+      <p>
+        Escreva com os elementos destacados no próprio texto. Você pode ajustar a classificação e
+        acompanhar o resultado na pré-visualização.
+      </p>
+      <div class="editor-layout">
+        <section class="painel-editor" aria-labelledby="titulo-editor">
+          <h3 id="titulo-editor">Conteúdo</h3>
+          @if (estruturado) {
+            <p>
+              Este documento já possui estrutura e formatação, incluindo tabelas. Seu conteúdo
+              original está preservado na prévia.
+            </p>
+            <details class="ajustes-importacao">
+              <summary>Ajustar conteúdo importado</summary>
+              <app-editor-conteudo [conteudo]="conteudo()" (alterar)="conteudo.set($event)" />
+            </details>
+          } @else {
+            <app-editor-continuo [documento]="documento()" (alterar)="atualizarDocumento($event)" />
+            <p class="contagem">{{ textoAtual().length }} / {{ limite }} caracteres</p>
+            @if (leituraTexto().avisos.length) {
+              <details class="avisos-editor">
+                <summary>
+                  Conferir {{ leituraTexto().avisos.length }} indicações de estrutura
+                </summary>
+                <ul>
+                  @for (aviso of leituraTexto().avisos; track $index) {
+                    <li>{{ aviso }}</li>
+                  }
+                </ul>
+              </details>
+            }
+            @if (limiteExcedido()) {
+              <p role="alert">
+                O texto excede 200.000 caracteres. Reduza o conteúdo para visualizar e salvar. O
+                texto colado foi mantido integralmente no editor.
+              </p>
+            }
+            @if (original?.norma.preambulo || original?.norma.assinaturas?.length) {
+              <details>
+                <summary>Preâmbulo e assinaturas do exemplo existente</summary>
+                <div class="br-textarea">
+                  <label for="preambulo">Preâmbulo</label
+                  ><textarea id="preambulo" rows="3" [formControl]="preambulo"></textarea>
+                </div>
+                <div class="br-textarea">
+                  <label for="assinaturas">Assinaturas (uma por linha)</label
+                  ><textarea id="assinaturas" rows="3" [formControl]="assinaturas"></textarea>
+                </div>
+              </details>
+            }
+          }
+        </section>
+        <section class="painel-previa" aria-labelledby="titulo-previa">
+          <h3 id="titulo-previa">Pré-visualização</h3>
+          <p class="reconhecimento" role="status">
+            {{ reconhecidos() || 'Aguardando conteúdo para reconhecer os elementos.' }}
+          </p>
+          <div class="documento-previa">
+            <app-norma-documento
+              [texto]="previa().texto"
+              [epigrafe]="previa().epigrafe"
+              [ementa]="previa().ementa"
+              [preambulo]="previa().preambulo"
+              [assinaturas]="previa().assinaturas"
+              [estrutura]="previa().leitura"
+              [mostrarIndice]="false"
+              prefixo="previa"
+            />
+          </div>
+        </section>
+      </div>
+      <div class="acoes">
+        <button type="button" class="br-button secondary" (click)="voltar(1)">
+          Voltar às informações
+        </button>
+        <button type="button" class="br-button primary" (click)="salvar()">Salvar no mock</button>
+        <a routerLink="/gestao">Cancelar</a>
+      </div>
+    }
+  }
+</div>

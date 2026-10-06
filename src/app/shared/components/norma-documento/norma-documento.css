@@ -18,7 +18,8 @@
 .documento {
   flex: 1;
   min-width: 0;
-  max-width: 80ch;
+  max-width: 100%;
+  text-align: justify;
   overflow-wrap: anywhere;
 }
 .epigrafe {

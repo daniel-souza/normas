@@ -19,6 +19,7 @@ export class NormaDocumento {
   readonly preambulo = input('');
   readonly assinaturas = input<readonly string[]>([]);
   readonly prefixo = input('norma');
+  readonly mostrarIndice = input(true);
   readonly estrutura = input<LeituraNormativa>();
   readonly leitura = computed(() => this.estrutura() ?? interpretarNorma(this.texto()));
   readonly indice = computed(() => criarIndice(this.leitura().blocos));

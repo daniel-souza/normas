@@ -1,0 +1,111 @@
+:host {
+  display: block;
+}
+.etapas,
+.acoes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-scale-2x);
+  padding: 0;
+  margin-block: var(--spacing-scale-3x);
+  align-items: center;
+}
+.etapas {
+  list-style: none;
+}
+.etapas li {
+  border-bottom: 3px solid var(--gray-20);
+  padding: var(--spacing-scale-base);
+}
+.etapas [aria-current] {
+  border-color: var(--blue-warm-vivid-70);
+  font-weight: var(--font-weight-bold);
+}
+.grade {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--spacing-scale-2x);
+}
+.inteira {
+  grid-column: 1 / -1;
+}
+.campo label {
+  display: block;
+  font-weight: var(--font-weight-semi-bold);
+}
+select {
+  width: 100%;
+  min-height: 40px;
+}
+.br-input,
+.br-textarea {
+  margin-block: var(--spacing-scale-base);
+}
+input.ng-invalid.ng-touched,
+textarea.ng-invalid.ng-touched,
+select.ng-invalid.ng-touched {
+  border-color: var(--red-vivid-50);
+}
+fieldset {
+  margin-block: var(--spacing-scale-2x);
+  padding: var(--spacing-scale-2x);
+  min-width: 0;
+  border: 1px solid var(--gray-20);
+}
+
+.editor-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--spacing-scale-3x);
+  align-items: start;
+}
+.painel-editor,
+.painel-previa {
+  min-width: 0;
+}
+.painel-previa {
+  border: 1px solid var(--gray-20);
+  border-radius: 4px;
+  padding: var(--spacing-scale-2x);
+  background: var(--gray-2);
+}
+.painel-editor h3,
+.painel-previa h3 {
+  margin-top: 0;
+  font-size: var(--font-size-scale-up-01);
+}
+.texto-editor {
+  min-height: 30rem;
+  line-height: 1.65;
+  resize: vertical;
+}
+.documento-previa {
+  max-height: 42rem;
+  overflow: auto;
+  padding: var(--spacing-scale-base);
+  background: var(--pure-0);
+}
+.ajustes-importacao {
+  max-height: 45rem;
+  overflow: auto;
+}
+.contagem {
+  text-align: right;
+  font-size: var(--font-size-scale-down-01);
+}
+.reconhecimento {
+  color: var(--blue-warm-vivid-70);
+}
+@media (max-width: 991px) {
+  .editor-layout {
+    grid-template-columns: 1fr;
+  }
+  .texto-editor {
+    min-height: 20rem;
+  }
+}
+@media (max-width: 767px) {
+  .grade {
+    grid-template-columns: 1fr;
+  }
+}

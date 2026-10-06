@@ -68,7 +68,12 @@ export function criarIndice(blocos: readonly BlocoNormativo[]): EntradaIndice[] 
     };
     const nivelAtual = nivel(bloco);
     if (!artigo) while (pilha.length && pilha[pilha.length - 1].nivel >= nivelAtual) pilha.pop();
-    const pai = bloco.paiId ? grupos.get(bloco.paiId) : pilha[pilha.length - 1]?.entrada;
+    const pai =
+      bloco.paiId !== undefined
+        ? bloco.paiId === null
+          ? undefined
+          : grupos.get(bloco.paiId)
+        : pilha[pilha.length - 1]?.entrada;
     (pai?.filhos ?? raiz).push(entrada);
     if (!artigo) {
       grupos.set(bloco.id, entrada);

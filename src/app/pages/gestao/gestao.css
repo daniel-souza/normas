@@ -1,0 +1,23 @@
+:host {
+  display: block;
+}
+.lista-normas {
+  list-style: none;
+  padding: 0;
+}
+.lista-normas > li,
+.confirmacao {
+  border: 1px solid var(--gray-20);
+  border-radius: 4px;
+  padding: var(--spacing-scale-3x);
+  margin-block: var(--spacing-scale-2x);
+}
+.lista-normas h2 {
+  font-size: var(--font-size-scale-up-01);
+  margin-top: 0;
+}
+.acoes {
+  display: flex;
+  gap: var(--spacing-scale-2x);
+  flex-wrap: wrap;
+}

@@ -11,7 +11,13 @@ npm exec --yes --package=npm@11.19.1 -- npm ci
 npm start
 ```
 
-A porta de desenvolvimento é 4200. As rotas são `/` (consulta), `/normas/:id` (documento) e `/leitor` (texto simples). O desenvolvimento local não exige chaves, autenticação ou serviços externos.
+A porta de desenvolvimento é 4200. As rotas são `/` (consulta), `/normas/:id` (documento), `/leitor` (texto simples), `/gestao` (mock de gestão), `/gestao/nova` (cadastro) e `/gestao/:id/editar` (edição). O desenvolvimento local não exige chaves, autenticação ou serviços externos.
+
+Os pacotes Angular estão alinhados em **22.2.1**, com `piscina` **5.3.2** e `source-map-js` **1.2.2** no lockfile. Após atualizar a branch, pare o servidor com Ctrl+C e reinstale usando `npm ci`. Se estiver vindo da versão anterior com falha nas fontes, execute `npx ng cache clean` antes de `npm start`. Não é necessário usar `npm audit fix --force`.
+
+O Font Awesome é uma entrada de estilos em `angular.json`: o builder resolve as fontes a partir do pacote. Seu CSS não passa pelo `@import` do Tailwind/PostCSS em `src/styles.css`. Os controles e signals de preâmbulo/assinaturas têm tipos `string` explícitos.
+
+Verificação desta correção em 06/10/2026: instalação limpa, build, 44 testes unitários e `npm audit` sem vulnerabilidades. Servidor de desenvolvimento e prévia do editor conferidos no Chromium, com as fontes solid, regular e brands carregadas com HTTP 200. Ambiente de execução Linux; Windows não foi executado nesta verificação.
 
 ## Verificar
 
@@ -29,8 +35,13 @@ O build inicial inclui cerca de 1,84 MB sem compressão (aproximadamente 218 kB 
 
 ## Organização e referências
 
-Validação desta entrega: instalação com npm 11.19.1, build de produção, 31 testes unitários e 16 testes de navegador (desktop e celular) concluídos com sucesso. O servidor também foi reiniciado após a reinstalação das dependências.
+Validação inicial do projeto (anterior ao mock de gestão): instalação com npm 11.19.1, build de produção, 31 testes unitários e 16 testes de navegador (desktop e celular) concluídos com sucesso. O servidor também foi reiniciado após a reinstalação das dependências.
 
+Validação do editor contínuo: build de produção, 44 testes unitários e 16 cenários de gestão em navegador (desktop/celular). Incluem classificações manuais, vazios, IDs estáveis, desfazer/refazer, colagem formatada, tabelas mescladas, reabertura, limites, edição e exclusão.
+
+- [Parser e renderização: regras, níveis e metadados, com exemplos](docs/parser-e-renderizacao.md).
+- [Editor contínuo: uso, algoritmo e contrato de dados](docs/editor-continuo.md).
+- [Mock de cadastro, edição e exclusão](docs/gestao-mock.md).
 - [Arquitetura, convenções de nomes e signals](docs/arquitetura.md).
 - [Redação normativa, fontes oficiais e limites do parser](docs/redacao-normativa.md).
 - Busca: `src/app/pages/search/`.
@@ -39,7 +50,7 @@ Validação desta entrega: instalação com npm 11.19.1, build de produção, 31
 
 A resolução importada está em `/normas/cnpq-resolucao-1-2023`; os exemplos anteriores continuam nos mesmos endereços. O índice lateral tem capítulos, seções e subseções recolhíveis e prévias dos artigos limitadas a 90 caracteres, com `...` quando necessário. As duas tabelas do anexo preservam células vazias e mescladas. A situação permanece “não verificada” e a publicação, não informada, como no JSON.
 
-Não há backend, autenticação, importação direta de PDF/HTML ou validação do schema JSON completo. O JSON incluído no projeto recebe validação estrutural antes da adaptação. O texto colado no leitor é processado em memória no navegador.
+Não há backend, autenticação, upload de DOCX/PDF ou validação do schema JSON completo. O JSON incluído no projeto recebe validação estrutural antes da adaptação. O texto colado no leitor é processado em memória no navegador. O mock de gestão exige as informações principais antes de abrir um editor contínuo com reconhecimento automático, destaques, classificação manual e pré-visualização. Novos cadastros recebem texto formatado e tabelas por colagem ou digitação e conservam suas decisões manuais ao reabrir; documentos já estruturados conservam seus elementos em ajustes recolhidos. A busca e a leitura existentes são reutilizadas. Todas as mutações são temporárias: recarregar a página restaura o acervo inicial.
 
 ## Situação das fontes oficiais
 

@@ -1,6 +1,6 @@
 import { BlocoNormativo, LeituraNormativa, TipoBloco } from './bloco-normativo';
 
-const PADROES: readonly [TipoBloco, RegExp][] = [
+export const PADROES: readonly [TipoBloco, RegExp][] = [
   ['artigo', /^(Art\.\s*\d+(?:[º°o])?(?:-[A-Z]+)?\.?)(?:\s+|$)(.*)$/i],
   ['paragrafo', /^(Parágrafo único\.?|§\s*\d+(?:[º°o])?(?:-[A-Z]+)?\.?)(?:\s+|$)(.*)$/i],
   ['inciso', /^([IVXLCDM]+\s*[-–—])\s*(.*)$/],

@@ -9,6 +9,17 @@ export type CategoriaNorma =
   | 'Instrução Normativa';
 
 export type SituacaoNorma = 'vigente' | 'revogada' | 'nao_verificada';
+export interface IdentificacaoNorma {
+  readonly orgao: string;
+  readonly especie: CategoriaNorma;
+  readonly numero: string;
+  readonly ano: number;
+  readonly dataAto: string;
+  readonly epigrafe: string;
+  readonly titulo: string;
+  readonly ementa: string;
+  readonly processo?: string;
+}
 export const SITUACOES_NORMA: Record<SituacaoNorma, string> = {
   vigente: 'Vigente',
   revogada: 'Revogada',
@@ -43,6 +54,9 @@ export interface ExtracaoNorma {
 /** Modelo de apresentação local, não substitui nem valida o JSON Schema completo. */
 export interface NormaLeitura {
   readonly id: string;
+  readonly identificacao?: IdentificacaoNorma;
+  /** Alteração temporária feita na gestão de demonstração. */
+  readonly alteracaoMock?: boolean;
   readonly categoria: CategoriaNorma;
   readonly epigrafe: string;
   readonly ementa: string;

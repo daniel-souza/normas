@@ -67,3 +67,13 @@ O acervo mistura a resolução importada e os dois exemplos fictícios originais
 ## Próximas integrações
 
 O schema completo permitirá ampliar a validação além do formato observado no anexo. Uma futura API pode consumir `RequisicaoBusca` e atualizar os signals de resultados, carregamento e erro sem redistribuir o estado pelos componentes. Autenticação e backend não estão implementados.
+
+## Gestão em memória
+
+A funcionalidade `pages/gestao` acrescenta cadastro, edição e exclusão ao mesmo `Acervo`. Novos documentos guardam JSON editável em `RegistroAcervo.editor`, com IDs estáveis, classificações manuais, marcas e tabelas. `interpretarDocumentoEditor` deriva `NormaLeitura.leitura`; a linearização alimenta a busca. Tiptap/ProseMirror controla a superfície e as decorações de classificação. Documentos importados mantêm `NormaEstruturada` como fonte de edição e derivam `NormaLeitura` ao salvar. A identificação integral é preservada em `NormaLeitura.identificacao`. A marca `alteracaoMock` informa alterações temporárias na leitura, sem afirmar que o documento importado original é fictício.
+
+O editor valida metadados antes de exibir o campo de texto e a prévia. A interface tem duas etapas; os controles de estrutura ficam recolhidos e são usados somente nos documentos importados. A exclusão exige confirmação na tela e altera somente a sessão. Não há persistência ou API. A busca continua usando o mesmo signal de normas, com a página limitada ao total atual após exclusões.
+
+No adaptador, `paiId: null` representa a raiz explícita do JSON. O índice só infere agrupamentos pela pilha quando `paiId` é `undefined`, como no parser de texto simples. Isso impede que um artigo na raiz do JSON seja associado ao capítulo anterior.
+
+Veja [o guia do parser](parser-e-renderizacao.md) e [o fluxo do mock](gestao-mock.md).
